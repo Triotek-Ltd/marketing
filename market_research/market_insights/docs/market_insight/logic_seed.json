@@ -1,0 +1,117 @@
+{
+  "doc_id": "market_insight",
+  "doc_title": "Market Insight",
+  "archetype": "ledger",
+  "doc_kind": "ledger",
+  "actions": [
+    "create",
+    "review",
+    "publish",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "reviewed",
+      "published",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 4,
+  "fetch_rule_count": 0,
+  "action_handler_count": 4,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "posting_flow",
+      "supports_reconciliation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "published",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "posting_date": "posting_date",
+      "owner": "actor_reference"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "insight_code",
+      "source_study_or_signal",
+      "insight_title"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "posting_date",
+      "workflow_state"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "published",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "review": "reviewed",
+      "publish": "published",
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "turn raw prospects into qualified leads with documented outreach and qualification evidence",
+    "actors": [
+      "sales rep",
+      "sales manager",
+      "reviewer"
+    ],
+    "start_condition": "a target customer or lead source is identified",
+    "ordered_steps": [],
+    "primary_actions": [],
+    "primary_transitions": [],
+    "downstream_effects": [
+      "feeds opportunity, negotiation, and forecast workflows"
+    ]
+  },
+  "related_docs": [
+    "research_study",
+    "survey_response",
+    "product_record",
+    "campaign_record"
+  ],
+  "borrowed_fields": [
+    "source context from research_study or survey_response"
+  ]
+}

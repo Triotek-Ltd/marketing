@@ -1,0 +1,27 @@
+{
+  "doc_key": "campaign_result",
+  "doc_title": "Campaign Result",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "advertising_promotion",
+  "submodule_id": "promotion_execution",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "advertising_promotion",
+    "submodule": "promotion_execution",
+    "reference_doc_id": "campaign_result",
+    "evidence_gaps": [
+      "attribution model",
+      "conversion-source rules"
+    ]
+  }
+}

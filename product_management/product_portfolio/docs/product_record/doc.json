@@ -1,0 +1,27 @@
+{
+  "doc_key": "product_record",
+  "doc_title": "Product Record",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "product_management",
+  "submodule_id": "product_portfolio",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "product_management",
+    "submodule": "product_portfolio",
+    "reference_doc_id": "product_record",
+    "evidence_gaps": [
+      "product-family model",
+      "handoff to sales/procurement masters"
+    ]
+  }
+}

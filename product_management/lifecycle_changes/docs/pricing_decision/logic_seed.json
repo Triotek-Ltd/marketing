@@ -1,0 +1,137 @@
+{
+  "doc_id": "pricing_decision",
+  "doc_title": "Pricing Decision",
+  "archetype": "transaction",
+  "doc_kind": "transaction",
+  "actions": [
+    "create",
+    "review",
+    "approve",
+    "reject",
+    "activate",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "reviewed",
+      "approved",
+      "effective",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 6,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "transaction_flow",
+      "supports_submission": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "approved",
+      "effective",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "transaction_date": "transaction_date",
+      "party": "primary_party",
+      "currency": "currency_code",
+      "total_amount": "total_amount",
+      "effective_date": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "decision_code",
+      "linked_product",
+      "current_price"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "transaction_date",
+      "party",
+      "total_amount",
+      "workflow_state"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "reviewed",
+      "approved",
+      "effective",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "review": "reviewed",
+      "approve": "approved",
+      "reject": null,
+      "activate": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "govern product lifecycle, pricing decisions, and catalog changes in a controlled way",
+    "actors": [
+      "product manager",
+      "pricing owner",
+      "approver"
+    ],
+    "start_condition": "a product is launched, updated, or repositioned",
+    "ordered_steps": [
+      "Decide pricing for the product state."
+    ],
+    "primary_actions": [
+      "create",
+      "review",
+      "approve"
+    ],
+    "primary_transitions": [
+      "pricing_decision: draft -> approved -> active"
+    ],
+    "downstream_effects": [
+      "feeds sales materials, catalog publication, and forecast planning"
+    ]
+  },
+  "related_docs": [
+    "product_record",
+    "product_lifecycle_case",
+    "quote_record"
+  ],
+  "borrowed_fields": [
+    "product identity",
+    "category from product_record"
+  ]
+}

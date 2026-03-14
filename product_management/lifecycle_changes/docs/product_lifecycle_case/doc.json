@@ -1,0 +1,27 @@
+{
+  "doc_key": "product_lifecycle_case",
+  "doc_title": "Product Lifecycle Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "product_management",
+  "submodule_id": "lifecycle_changes",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "product_management",
+    "submodule": "lifecycle_changes",
+    "reference_doc_id": "product_lifecycle_case",
+    "evidence_gaps": [
+      "launch-gate model",
+      "cross-functional approvals"
+    ]
+  }
+}

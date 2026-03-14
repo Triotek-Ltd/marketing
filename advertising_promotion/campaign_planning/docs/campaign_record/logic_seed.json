@@ -1,0 +1,138 @@
+{
+  "doc_id": "campaign_record",
+  "doc_title": "Campaign Record",
+  "archetype": "workflow_case",
+  "doc_kind": "workflow_case",
+  "actions": [
+    "create",
+    "review",
+    "approve",
+    "launch",
+    "pause",
+    "close",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "approved",
+      "active",
+      "paused",
+      "completed",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 4,
+  "fetch_rule_count": 0,
+  "action_handler_count": 7,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "case_flow",
+      "supports_assignment": true,
+      "supports_escalation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": false
+    },
+    "lifecycle_states": [
+      "draft",
+      "approved",
+      "active",
+      "paused",
+      "completed",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "start_date": "schedule_marker",
+      "end_date": "schedule_marker",
+      "owner": "actor_reference",
+      "campaign_status": "status_flag"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "campaign_code",
+      "objective",
+      "budget"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "workflow_state",
+      "modified"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "approved",
+      "active",
+      "paused",
+      "completed",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "review": null,
+      "approve": "approved",
+      "launch": null,
+      "pause": null,
+      "close": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "plan, approve, launch, and monitor promotional campaigns against budget and objectives",
+    "actors": [
+      "campaign owner",
+      "approver",
+      "analyst"
+    ],
+    "start_condition": "a campaign objective and budget are approved",
+    "ordered_steps": [
+      "Create the campaign record and objective."
+    ],
+    "primary_actions": [
+      "create",
+      "review"
+    ],
+    "primary_transitions": [
+      "campaign_record: draft -> planned"
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis"
+    ]
+  },
+  "related_docs": [
+    "promotion_offer",
+    "media_plan",
+    "campaign_result",
+    "brand_campaign_brief"
+  ],
+  "borrowed_fields": [
+    "audience",
+    "messaging from brand_campaign_brief"
+  ]
+}

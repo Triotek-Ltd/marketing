@@ -1,0 +1,27 @@
+{
+  "doc_key": "brand_campaign_brief",
+  "doc_title": "Brand Campaign Brief",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "brand_management",
+  "submodule_id": "brand_assets",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "brand_management",
+    "submodule": "brand_assets",
+    "reference_doc_id": "brand_campaign_brief",
+    "evidence_gaps": [
+      "creative-approval workflow",
+      "asset binding model"
+    ]
+  }
+}

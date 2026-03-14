@@ -1,0 +1,27 @@
+{
+  "doc_key": "segment_profile",
+  "doc_title": "Segment Profile",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "market_research",
+  "submodule_id": "research_studies",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "market_research",
+    "submodule": "research_studies",
+    "reference_doc_id": "segment_profile",
+    "evidence_gaps": [
+      "segmentation framework",
+      "overlap rules"
+    ]
+  }
+}

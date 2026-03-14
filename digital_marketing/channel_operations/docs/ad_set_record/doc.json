@@ -1,0 +1,27 @@
+{
+  "doc_key": "ad_set_record",
+  "doc_title": "Ad Set Record",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "digital_marketing",
+  "submodule_id": "channel_operations",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "digital_marketing",
+    "submodule": "channel_operations",
+    "reference_doc_id": "ad_set_record",
+    "evidence_gaps": [
+      "audience definition",
+      "ad-set performance breakdown"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "doc_key": "brand_asset",
+  "doc_title": "Brand Asset",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "brand_management",
+  "submodule_id": "brand_assets",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "brand_management",
+    "submodule": "brand_assets",
+    "reference_doc_id": "brand_asset",
+    "evidence_gaps": [
+      "asset versioning",
+      "rights/usage restrictions"
+    ]
+  }
+}

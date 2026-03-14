@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "channel_operations",
+    "lead_capture"
+  ]
+}

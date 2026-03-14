@@ -1,0 +1,126 @@
+{
+  "doc_id": "survey_response",
+  "doc_title": "Survey Response",
+  "archetype": "transaction",
+  "doc_kind": "transaction",
+  "actions": [
+    "capture",
+    "validate",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "received",
+    "states": [
+      "received",
+      "validated",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 3,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "transaction_flow",
+      "supports_submission": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "received",
+      "validated",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "transaction_date": "transaction_date",
+      "party": "primary_party",
+      "currency": "currency_code",
+      "total_amount": "total_amount",
+      "response_date": "schedule_marker",
+      "answer_payload": "structured_payload",
+      "completion_status": "status_flag"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "response_code",
+      "linked_study",
+      "respondent_type"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "transaction_date",
+      "party",
+      "total_amount",
+      "workflow_state"
+    ],
+    "initial_state": "received",
+    "lifecycle_states": [
+      "received",
+      "validated",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "capture": null,
+      "validate": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "investigate market questions, collect evidence, and publish usable commercial insight",
+    "actors": [
+      "researcher",
+      "analyst",
+      "marketing owner"
+    ],
+    "start_condition": "a market-research question is defined",
+    "ordered_steps": [
+      "Collect survey or interview responses."
+    ],
+    "primary_actions": [
+      "record",
+      "review"
+    ],
+    "primary_transitions": [
+      "survey_response: active"
+    ],
+    "downstream_effects": [
+      "supports product, pricing, sales, and campaign decisions"
+    ]
+  },
+  "related_docs": [
+    "research_study",
+    "segment_profile",
+    "market_insight"
+  ],
+  "borrowed_fields": [
+    "study",
+    "segment context from linked records"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "product_portfolio",
+  "title": "Product Portfolio",
+  "app_id": "marketing",
+  "module_id": "product_management",
+  "type": "submodule",
+  "status": "draft"
+}

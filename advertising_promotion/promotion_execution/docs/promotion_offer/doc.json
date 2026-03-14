@@ -1,0 +1,27 @@
+{
+  "doc_key": "promotion_offer",
+  "doc_title": "Promotion Offer",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "advertising_promotion",
+  "submodule_id": "promotion_execution",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "advertising_promotion",
+    "submodule": "promotion_execution",
+    "reference_doc_id": "promotion_offer",
+    "evidence_gaps": [
+      "promotion-rule engine",
+      "stacking/exclusion logic"
+    ]
+  }
+}

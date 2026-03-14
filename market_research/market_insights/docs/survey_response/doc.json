@@ -1,0 +1,27 @@
+{
+  "doc_key": "survey_response",
+  "doc_title": "Survey Response",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "market_research",
+  "submodule_id": "market_insights",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "market_research",
+    "submodule": "market_insights",
+    "reference_doc_id": "survey_response",
+    "evidence_gaps": [
+      "anonymity model",
+      "response-schema conventions"
+    ]
+  }
+}

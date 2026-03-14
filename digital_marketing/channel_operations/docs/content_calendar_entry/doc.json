@@ -1,0 +1,27 @@
+{
+  "doc_key": "content_calendar_entry",
+  "doc_title": "Content Calendar Entry",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "digital_marketing",
+  "submodule_id": "channel_operations",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "digital_marketing",
+    "submodule": "channel_operations",
+    "reference_doc_id": "content_calendar_entry",
+    "evidence_gaps": [
+      "content-format schema",
+      "approval workflow"
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "doc_id": "campaign_result",
+  "doc_title": "Campaign Result",
+  "archetype": "ledger",
+  "doc_kind": "ledger",
+  "actions": [
+    "record",
+    "review",
+    "finalize",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "open",
+    "states": [
+      "open",
+      "reviewed",
+      "finalized",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 3,
+  "fetch_rule_count": 0,
+  "action_handler_count": 4,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "posting_flow",
+      "supports_reconciliation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "open",
+      "reviewed",
+      "finalized",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "posting_date": "posting_date",
+      "spend_total": "monetary_value"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "result_code",
+      "linked_campaign",
+      "reporting_period"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "posting_date",
+      "workflow_state"
+    ],
+    "initial_state": "open",
+    "lifecycle_states": [
+      "open",
+      "reviewed",
+      "finalized",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "record": null,
+      "review": "reviewed",
+      "finalize": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "plan, approve, launch, and monitor promotional campaigns against budget and objectives",
+    "actors": [
+      "campaign owner",
+      "approver",
+      "analyst"
+    ],
+    "start_condition": "a campaign objective and budget are approved",
+    "ordered_steps": [
+      "Capture campaign results and performance review."
+    ],
+    "primary_actions": [
+      "record",
+      "review",
+      "close"
+    ],
+    "primary_transitions": [
+      "campaign_result: active -> reviewed -> closed"
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis"
+    ]
+  },
+  "related_docs": [
+    "campaign_record",
+    "media_plan",
+    "lead_capture_record"
+  ],
+  "borrowed_fields": [
+    "planned budget",
+    "dates from linked campaign or media plan"
+  ]
+}

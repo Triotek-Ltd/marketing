@@ -1,0 +1,27 @@
+{
+  "doc_key": "campaign_record",
+  "doc_title": "Campaign Record",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "advertising_promotion",
+  "submodule_id": "campaign_planning",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "advertising_promotion",
+    "submodule": "campaign_planning",
+    "reference_doc_id": "campaign_record",
+    "evidence_gaps": [
+      "spend-approval model",
+      "multi-channel allocation structure"
+    ]
+  }
+}

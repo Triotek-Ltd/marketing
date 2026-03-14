@@ -1,0 +1,9 @@
+{
+  "modules": [
+    "advertising_promotion",
+    "brand_management",
+    "digital_marketing",
+    "market_research",
+    "product_management"
+  ]
+}

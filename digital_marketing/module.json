@@ -1,0 +1,8 @@
+{
+  "id": "digital_marketing",
+  "title": "Digital Marketing",
+  "app_id": "marketing",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

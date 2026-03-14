@@ -1,0 +1,27 @@
+{
+  "doc_key": "brand_guideline",
+  "doc_title": "Brand Guideline",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "brand_management",
+  "submodule_id": "brand_controls",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "brand_management",
+    "submodule": "brand_controls",
+    "reference_doc_id": "brand_guideline",
+    "evidence_gaps": [
+      "control taxonomy",
+      "mandatory-acknowledgment handling"
+    ]
+  }
+}

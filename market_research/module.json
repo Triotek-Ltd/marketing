@@ -1,0 +1,8 @@
+{
+  "id": "market_research",
+  "title": "Market Research",
+  "app_id": "marketing",
+  "type": "module",
+  "status": "draft",
+  "supports_submodules": true
+}

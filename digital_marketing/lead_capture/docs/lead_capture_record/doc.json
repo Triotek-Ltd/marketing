@@ -1,0 +1,27 @@
+{
+  "doc_key": "lead_capture_record",
+  "doc_title": "Lead Capture Record",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "digital_marketing",
+  "submodule_id": "lead_capture",
+  "app_id": "marketing",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "operations"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "operations",
+    "app": "marketing",
+    "module": "digital_marketing",
+    "submodule": "lead_capture",
+    "reference_doc_id": "lead_capture_record",
+    "evidence_gaps": [
+      "attribution window",
+      "merge rules into sales leads"
+    ]
+  }
+}

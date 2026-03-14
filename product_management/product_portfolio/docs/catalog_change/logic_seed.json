@@ -1,0 +1,116 @@
+{
+  "doc_id": "catalog_change",
+  "doc_title": "Catalog Change",
+  "archetype": "ledger",
+  "doc_kind": "ledger",
+  "actions": [
+    "record",
+    "review",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "active",
+    "states": [
+      "active",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 2,
+  "fetch_rule_count": 0,
+  "action_handler_count": 3,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "posting_flow",
+      "supports_reconciliation": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": true
+    },
+    "integration_profile": {
+      "external_sync_enabled": true,
+      "tracks_external_refs": true
+    },
+    "lifecycle_states": [
+      "active",
+      "archived"
+    ],
+    "is_transactional": true
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "posting_date": "posting_date",
+      "changed_at": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "change_code",
+      "linked_product",
+      "change_type"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "posting_date",
+      "workflow_state"
+    ],
+    "initial_state": "active",
+    "lifecycle_states": [
+      "active",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "record": null,
+      "review": null,
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "govern product lifecycle, pricing decisions, and catalog changes in a controlled way",
+    "actors": [
+      "product manager",
+      "pricing owner",
+      "approver"
+    ],
+    "start_condition": "a product is launched, updated, or repositioned",
+    "ordered_steps": [
+      "Publish catalog changes."
+    ],
+    "primary_actions": [
+      "create",
+      "approve",
+      "publish",
+      "close"
+    ],
+    "primary_transitions": [
+      "catalog_change: draft -> approved -> published -> closed"
+    ],
+    "downstream_effects": [
+      "feeds sales materials, catalog publication, and forecast planning"
+    ]
+  },
+  "related_docs": [
+    "product_record",
+    "product_lifecycle_case"
+  ],
+  "borrowed_fields": [
+    "product identity from product_record"
+  ]
+}

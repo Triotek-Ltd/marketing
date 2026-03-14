@@ -1,0 +1,92 @@
+{
+  "display": {
+    "title_template": "{title}",
+    "subtitle_template": "{reference_no}",
+    "list_columns": [
+      "title",
+      "reference_no",
+      "workflow_state",
+      "modified"
+    ],
+    "default_filters": [],
+    "quick_entry": false
+  },
+  "related_docs": [
+    {
+      "doc_id": "promotion_offer",
+      "relation_type": "related",
+      "show_in_related_panel": true
+    },
+    {
+      "doc_id": "media_plan",
+      "relation_type": "related",
+      "show_in_related_panel": true
+    },
+    {
+      "doc_id": "campaign_result",
+      "relation_type": "related",
+      "show_in_related_panel": true
+    },
+    {
+      "doc_id": "brand_campaign_brief",
+      "relation_type": "related",
+      "show_in_related_panel": true
+    }
+  ],
+  "lookup_rules": [],
+  "fetch_rules": [],
+  "reference_map": {
+    "primary_reference_field": "reference_no",
+    "reference_labels": []
+  },
+  "relation_rules": {
+    "parent_doc": null,
+    "child_docs": [],
+    "show_related_panel": true
+  },
+  "borrowed_fields": [
+    {
+      "description": "audience"
+    },
+    {
+      "description": "messaging from brand_campaign_brief"
+    }
+  ],
+  "ui_panels": {
+    "show_activity_log": true,
+    "show_comments": true,
+    "show_assignments": true,
+    "show_related_docs": true
+  },
+  "integration": {
+    "external_refs": [],
+    "sync_rules": []
+  },
+  "runtime_hints": {
+    "doc_key": "campaign_record",
+    "supports_related_lookup": true,
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "business_objective": "plan, approve, launch, and monitor promotional campaigns against budget and objectives",
+      "actors": [
+        "campaign owner",
+        "approver",
+        "analyst"
+      ],
+      "start_condition": "a campaign objective and budget are approved",
+      "ordered_steps": [
+        "Create the campaign record and objective."
+      ],
+      "primary_actions": [
+        "create",
+        "review"
+      ],
+      "primary_transitions": [
+        "campaign_record: draft -> planned"
+      ],
+      "downstream_effects": [
+        "supports digital execution, brand review, and revenue analysis"
+      ]
+    }
+  }
+}

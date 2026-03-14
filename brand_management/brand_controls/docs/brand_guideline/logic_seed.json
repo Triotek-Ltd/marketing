@@ -1,0 +1,120 @@
+{
+  "doc_id": "brand_guideline",
+  "doc_title": "Brand Guideline",
+  "archetype": "configuration",
+  "doc_kind": "configuration",
+  "actions": [
+    "create",
+    "update",
+    "review",
+    "publish",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "draft",
+    "states": [
+      "draft",
+      "approved",
+      "published",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ]
+  },
+  "related_doc_count": 2,
+  "fetch_rule_count": 0,
+  "action_handler_count": 5,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "configuration_control",
+      "case_management": false
+    },
+    "reporting_profile": {
+      "supports_snapshots": false,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": true
+    },
+    "lifecycle_states": [
+      "draft",
+      "approved",
+      "published",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "review_date": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "guideline_code",
+      "version",
+      "scope"
+    ],
+    "list_columns": [
+      "title",
+      "reference_no",
+      "workflow_state",
+      "modified"
+    ],
+    "initial_state": "draft",
+    "lifecycle_states": [
+      "draft",
+      "approved",
+      "published",
+      "archived"
+    ],
+    "terminal_states": [
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "update": null,
+      "review": null,
+      "publish": "published",
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {
+    "business_objective": "maintain brand identity standards and control the assets released under the brand",
+    "actors": [
+      "brand owner",
+      "designer",
+      "reviewer"
+    ],
+    "start_condition": "a brand asset or guideline update is needed",
+    "ordered_steps": [
+      "Publish or revise the brand guideline set."
+    ],
+    "primary_actions": [
+      "create",
+      "approve",
+      "publish"
+    ],
+    "primary_transitions": [
+      "brand_guideline: draft -> approved -> active"
+    ],
+    "downstream_effects": [
+      "supports campaigns, product marketing, and external communications"
+    ]
+  },
+  "related_docs": [
+    "brand_asset",
+    "brand_campaign_brief"
+  ],
+  "borrowed_fields": []
+}

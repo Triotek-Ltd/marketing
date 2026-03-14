@@ -1,0 +1,26 @@
+"""Action handler seed for campaign_record:review."""
+
+from __future__ import annotations
+
+
+DOC_ID = "campaign_record"
+ACTION_ID = "review"
+ACTION_RULE = {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}
+
+STATE_FIELD = 'workflow_state'
+WORKFLOW_HINTS = {'business_objective': 'plan, approve, launch, and monitor promotional campaigns against budget and objectives', 'actors': ['campaign owner', 'approver', 'analyst'], 'start_condition': 'a campaign objective and budget are approved', 'ordered_steps': ['Create the campaign record and objective.'], 'primary_actions': ['create', 'review'], 'primary_transitions': ['campaign_record: draft -> planned'], 'downstream_effects': ['supports digital execution, brand review, and revenue analysis']}
+
+def handle_review(payload: dict, context: dict | None = None) -> dict:
+    context = context or {}
+    next_state = ACTION_RULE.get("transitions_to")
+    updates = {STATE_FIELD: next_state} if STATE_FIELD and next_state else {}
+    return {
+        "doc_id": DOC_ID,
+        "action_id": ACTION_ID,
+        "payload": payload,
+        "context": context,
+        "allowed_in_states": ACTION_RULE.get("allowed_in_states", []),
+        "next_state": next_state,
+        "updates": updates,
+        "workflow_objective": WORKFLOW_HINTS.get("business_objective"),
+    }
