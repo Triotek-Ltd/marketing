@@ -69,7 +69,11 @@
         "target_segment",
         "method"
       ],
-      "relations": [],
+      "relations": [
+        "related_segment_profile",
+        "related_survey_response",
+        "related_market_insight"
+      ],
       "amounts": [],
       "dates": [
         "start_date",
@@ -386,6 +390,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_segment_profile",
+        "label": "Related Segment Profile",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "segment_profile",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_survey_response",
+        "label": "Related Survey Response",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "survey_response",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_market_insight",
+        "label": "Related Market Insight",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "market_insight",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -489,16 +565,40 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "approve",
+          "launch",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "researcher",
+        "actions": [
+          "view",
+          "list",
+          "create"
+        ]
+      },
+      {
+        "role_id": "analyst",
+        "actions": [
+          "view",
+          "list",
+          "review",
+          "approve"
+        ]
+      },
+      {
+        "role_id": "marketing owner",
+        "actions": [
+          "view",
+          "list",
+          "launch",
+          "close",
           "archive"
         ]
       }
@@ -577,7 +677,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_segment_profile",
+        "doc_id": "segment_profile",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_survey_response",
+        "doc_id": "survey_response",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_market_insight",
+        "doc_id": "market_insight",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -585,7 +704,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "segment_profile",
+        "survey_response",
+        "market_insight"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -628,8 +751,29 @@
         ],
         "downstream_effects": [
           "supports product, pricing, sales, and campaign decisions"
-        ]
-      }
+        ],
+        "action_actors": {
+          "create": [
+            "researcher"
+          ],
+          "review": [
+            "analyst"
+          ],
+          "approve": [
+            "analyst"
+          ],
+          "launch": [
+            "marketing owner"
+          ],
+          "close": [
+            "marketing owner"
+          ],
+          "archive": [
+            "marketing owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -705,6 +849,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -723,6 +870,39 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/marketing/market_research/research_studies/research_study/",
+    "status_field": "workflow_state",
+    "initial_state": "draft",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "approve",
+        "source_state": "draft",
+        "target_state": "approved",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "draft",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "segment_profile",
+      "survey_response",
+      "market_insight"
+    ],
+    "downstream_effects": [
+      "supports product, pricing, sales, and campaign decisions"
+    ],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -730,7 +910,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

@@ -58,7 +58,11 @@
         "size_estimate",
         "priority_level"
       ],
-      "relations": [],
+      "relations": [
+        "related_research_study",
+        "related_value_proposition",
+        "related_campaign_record"
+      ],
       "amounts": [],
       "dates": [],
       "parties": [],
@@ -311,6 +315,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_research_study",
+        "label": "Related Research Study",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "research_study",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_value_proposition",
+        "label": "Related Value Proposition",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "value_proposition",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_campaign_record",
+        "label": "Related Campaign Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "campaign_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -381,16 +457,36 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
+          "update",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "researcher",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "update"
+        ]
+      },
+      {
+        "role_id": "analyst",
+        "actions": [
+          "view",
+          "list",
+          "review"
+        ]
+      },
+      {
+        "role_id": "marketing owner",
+        "actions": [
+          "view",
+          "list",
           "archive"
         ]
       }
@@ -469,7 +565,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_research_study",
+        "doc_id": "research_study",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_value_proposition",
+        "doc_id": "value_proposition",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_campaign_record",
+        "doc_id": "campaign_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -477,7 +592,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "research_study",
+        "value_proposition",
+        "campaign_record"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [],
@@ -516,8 +635,23 @@
         ],
         "downstream_effects": [
           "supports product, pricing, sales, and campaign decisions"
-        ]
-      }
+        ],
+        "action_actors": {
+          "create": [
+            "researcher"
+          ],
+          "update": [
+            "researcher"
+          ],
+          "review": [
+            "analyst"
+          ],
+          "archive": [
+            "marketing owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -593,6 +727,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -609,6 +746,33 @@
       "doc_kind": "master"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/marketing/market_research/research_studies/segment_profile/",
+    "status_field": "workflow_state",
+    "initial_state": "active",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "archive",
+        "source_state": "active",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "research_study",
+      "value_proposition",
+      "campaign_record"
+    ],
+    "downstream_effects": [
+      "supports product, pricing, sales, and campaign decisions"
+    ],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -616,7 +780,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

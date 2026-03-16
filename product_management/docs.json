@@ -1,8 +1,8 @@
 {
   "docs": [
+    "catalog_change",
     "pricing_decision",
     "product_lifecycle_case",
-    "catalog_change",
     "product_record"
   ]
 }

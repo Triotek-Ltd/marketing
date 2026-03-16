@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_research_study",
+      "doc_id": "research_study",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_value_proposition",
+      "doc_id": "value_proposition",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_campaign_record",
+      "doc_id": "campaign_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "research_study",
+      "value_proposition",
+      "campaign_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -75,7 +98,22 @@
       ],
       "downstream_effects": [
         "supports product, pricing, sales, and campaign decisions"
-      ]
-    }
+      ],
+      "action_actors": {
+        "create": [
+          "researcher"
+        ],
+        "update": [
+          "researcher"
+        ],
+        "review": [
+          "analyst"
+        ],
+        "archive": [
+          "marketing owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

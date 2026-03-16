@@ -55,7 +55,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "owner": "actor_reference",
-      "active_status": "status_flag"
+      "active_status": "status_flag",
+      "related_product_lifecycle_case": "relation_collection",
+      "related_pricing_decision": "relation_collection",
+      "related_catalog_change": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -109,8 +112,26 @@
     ],
     "downstream_effects": [
       "feeds sales materials, catalog publication, and forecast planning"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "product manager"
+      ],
+      "update": [
+        "product manager"
+      ],
+      "review": [
+        "pricing owner"
+      ],
+      "archive": [
+        "pricing owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds sales materials, catalog publication, and forecast planning"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "product_lifecycle_case",
     "pricing_decision",

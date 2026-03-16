@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_content_calendar_entry",
+      "doc_id": "content_calendar_entry",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_ad_set_record",
+      "doc_id": "ad_set_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_lead_capture_record",
+      "doc_id": "lead_capture_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_capture_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -53,6 +76,7 @@
   "runtime_hints": {
     "doc_key": "digital_channel",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "action_side_effects_file": "side_effects.json"
   }
 }

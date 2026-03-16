@@ -59,7 +59,10 @@
       "total_amount": "total_amount",
       "response_date": "schedule_marker",
       "answer_payload": "structured_payload",
-      "completion_status": "status_flag"
+      "completion_status": "status_flag",
+      "related_research_study": "relation_collection",
+      "related_segment_profile": "relation_collection",
+      "related_market_insight": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -112,8 +115,17 @@
     ],
     "downstream_effects": [
       "supports product, pricing, sales, and campaign decisions"
-    ]
+    ],
+    "action_actors": {
+      "archive": [
+        "marketing owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports product, pricing, sales, and campaign decisions"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "research_study",
     "segment_profile",

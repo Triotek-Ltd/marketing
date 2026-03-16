@@ -8,7 +8,7 @@ ACTION_ID = "approve"
 ACTION_RULE = {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': 'approved'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Create and review brand assets.', 'Release the approved asset set for use.'], 'primary_actions': ['create', 'review', 'approve', 'reject', 'publish', 'archive'], 'primary_transitions': ['brand_asset: draft -> in_review -> approved or rejected', 'brand_asset: approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications']}
+WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Create and review brand assets.', 'Release the approved asset set for use.'], 'primary_actions': ['create', 'review', 'approve', 'reject', 'publish', 'archive'], 'primary_transitions': ['brand_asset: draft -> in_review -> approved or rejected', 'brand_asset: approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications'], 'action_actors': {'create': ['brand owner'], 'review': ['reviewer'], 'approve': ['reviewer'], 'archive': ['brand owner']}}
 
 def handle_approve(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

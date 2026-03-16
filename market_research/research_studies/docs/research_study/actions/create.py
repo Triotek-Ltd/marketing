@@ -8,7 +8,7 @@ ACTION_ID = "create"
 ACTION_RULE = {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Open the study and define the target segment.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['research_study: draft -> approved -> active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions']}
+WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Open the study and define the target segment.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['research_study: draft -> approved -> active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions'], 'action_actors': {'create': ['researcher'], 'review': ['analyst'], 'approve': ['analyst'], 'launch': ['marketing owner'], 'close': ['marketing owner'], 'archive': ['marketing owner']}}
 
 def handle_create(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

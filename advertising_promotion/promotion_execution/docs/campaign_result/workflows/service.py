@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'record': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'reviewed'}, 'finalize': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'plan, approve, launch, and monitor promotional campaigns against budget and objectives', 'actors': ['campaign owner', 'approver', 'analyst'], 'start_condition': 'a campaign objective and budget are approved', 'ordered_steps': ['Capture campaign results and performance review.'], 'primary_actions': ['record', 'review', 'close'], 'primary_transitions': ['campaign_result: active -> reviewed -> closed'], 'downstream_effects': ['supports digital execution, brand review, and revenue analysis']}
+WORKFLOW_HINTS = {'business_objective': 'plan, approve, launch, and monitor promotional campaigns against budget and objectives', 'actors': ['campaign owner', 'approver', 'analyst'], 'start_condition': 'a campaign objective and budget are approved', 'ordered_steps': ['Capture campaign results and performance review.'], 'primary_actions': ['record', 'review', 'close'], 'primary_transitions': ['campaign_result: active -> reviewed -> closed'], 'downstream_effects': ['supports digital execution, brand review, and revenue analysis'], 'action_actors': {'record': ['campaign owner'], 'review': ['analyst'], 'archive': ['campaign owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

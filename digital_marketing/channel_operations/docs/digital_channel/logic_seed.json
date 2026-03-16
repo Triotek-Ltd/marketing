@@ -51,7 +51,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "owner": "actor_reference",
-      "active_status": "status_flag"
+      "active_status": "status_flag",
+      "related_content_calendar_entry": "relation_collection",
+      "related_ad_set_record": "relation_collection",
+      "related_lead_capture_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -83,6 +86,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "content_calendar_entry",
     "ad_set_record",

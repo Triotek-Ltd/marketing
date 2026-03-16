@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'transaction_flow', 'supports_submission': True}, 'reporting_profile': {'supports_snapshots': True, 'supports_outputs': True}, 'integration_profile': {'external_sync_enabled': True, 'tracks_external_refs': True}, 'lifecycle_states': ['draft', 'reviewed', 'approved', 'effective', 'archived'], 'is_transactional': True}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'effective_date': 'schedule_marker'}, 'search_fields': ['title', 'reference_no', 'description', 'decision_code', 'linked_product', 'current_price'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'reviewed', 'approved', 'effective', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'review': 'reviewed', 'approve': 'approved', 'reject': None, 'activate': None, 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state', 'transaction_date'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'transaction_date': 'transaction_date', 'party': 'primary_party', 'currency': 'currency_code', 'total_amount': 'total_amount', 'effective_date': 'schedule_marker', 'related_product_record': 'relation_collection', 'related_product_lifecycle_case': 'relation_collection', 'related_quote_record': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'decision_code', 'linked_product', 'current_price'], 'list_columns': ['title', 'reference_no', 'transaction_date', 'party', 'total_amount', 'workflow_state'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'reviewed', 'approved', 'effective', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'review': 'reviewed', 'approve': 'approved', 'reject': None, 'activate': None, 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Decide pricing for the product state.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['pricing_decision: draft -> approved -> active'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning']}
+WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Decide pricing for the product state.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['pricing_decision: draft -> approved -> active'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning'], 'action_actors': {'create': ['product manager'], 'review': ['pricing owner'], 'approve': ['approver'], 'reject': ['approver'], 'activate': ['pricing owner'], 'archive': ['pricing owner']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning'], 'related_docs': ['product_record', 'product_lifecycle_case', 'quote_record'], 'action_targets': {'create': None, 'review': 'reviewed', 'approve': 'approved', 'reject': None, 'activate': None, 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "pricing_decision"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

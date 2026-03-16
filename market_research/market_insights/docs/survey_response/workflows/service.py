@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'capture': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'validate': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['received', 'validated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Collect survey or interview responses.'], 'primary_actions': ['record', 'review'], 'primary_transitions': ['survey_response: active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions']}
+WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Collect survey or interview responses.'], 'primary_actions': ['record', 'review'], 'primary_transitions': ['survey_response: active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions'], 'action_actors': {'archive': ['marketing owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

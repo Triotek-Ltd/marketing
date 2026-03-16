@@ -309,6 +309,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_campaign_record",
+      "label": "Related Campaign Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "campaign_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_media_plan",
+      "label": "Related Media Plan",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "media_plan",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_lead_capture_record",
+      "label": "Related Lead Capture Record",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "lead_capture_record",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -333,7 +405,11 @@
       "roi_summary",
       "performance_state"
     ],
-    "relations": [],
+    "relations": [
+      "related_campaign_record",
+      "related_media_plan",
+      "related_lead_capture_record"
+    ],
     "amounts": [
       "spend_total"
     ],
@@ -416,17 +492,36 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
         "record",
         "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "finalize",
         "archive"
+      ]
+    },
+    {
+      "role_id": "campaign owner",
+      "actions": [
+        "view",
+        "list",
+        "record",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "approver",
+      "actions": [
+        "view",
+        "list"
+      ]
+    },
+    {
+      "role_id": "analyst",
+      "actions": [
+        "view",
+        "list",
+        "review"
       ]
     }
   ],

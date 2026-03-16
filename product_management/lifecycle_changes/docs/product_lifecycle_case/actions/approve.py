@@ -8,7 +8,7 @@ ACTION_ID = "approve"
 ACTION_RULE = {'allowed_in_states': ['proposed', 'in_review', 'approved', 'in_progress', 'completed', 'cancelled'], 'transitions_to': 'approved'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Route launch or change requests through lifecycle control.'], 'primary_actions': ['create', 'assign', 'approve', 'close'], 'primary_transitions': ['product_lifecycle_case: opened -> in_review -> approved -> closed'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning']}
+WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Route launch or change requests through lifecycle control.'], 'primary_actions': ['create', 'assign', 'approve', 'close'], 'primary_transitions': ['product_lifecycle_case: opened -> in_review -> approved -> closed'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning'], 'action_actors': {'create': ['product manager'], 'review': ['pricing owner'], 'approve': ['approver'], 'activate': ['pricing owner'], 'close': ['pricing owner'], 'cancel': ['pricing owner'], 'archive': ['pricing owner']}}
 
 def handle_approve(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

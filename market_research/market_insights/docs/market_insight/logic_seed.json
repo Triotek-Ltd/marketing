@@ -57,7 +57,11 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_research_study": "relation_collection",
+      "related_survey_response": "relation_collection",
+      "related_product_record": "relation_collection",
+      "related_campaign_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -103,8 +107,26 @@
     "primary_transitions": [],
     "downstream_effects": [
       "feeds opportunity, negotiation, and forecast workflows"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "sales rep"
+      ],
+      "review": [
+        "reviewer"
+      ],
+      "publish": [
+        "sales rep"
+      ],
+      "archive": [
+        "sales manager"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds opportunity, negotiation, and forecast workflows"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "research_study",
     "survey_response",

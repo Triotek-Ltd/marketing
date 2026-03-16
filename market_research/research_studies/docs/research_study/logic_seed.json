@@ -62,7 +62,10 @@
       "owner": "actor_reference",
       "start_date": "schedule_marker",
       "end_date": "schedule_marker",
-      "study_status": "status_flag"
+      "study_status": "status_flag",
+      "related_segment_profile": "relation_collection",
+      "related_survey_response": "relation_collection",
+      "related_market_insight": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -119,8 +122,32 @@
     ],
     "downstream_effects": [
       "supports product, pricing, sales, and campaign decisions"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "researcher"
+      ],
+      "review": [
+        "analyst"
+      ],
+      "approve": [
+        "analyst"
+      ],
+      "launch": [
+        "marketing owner"
+      ],
+      "close": [
+        "marketing owner"
+      ],
+      "archive": [
+        "marketing owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports product, pricing, sales, and campaign decisions"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "segment_profile",
     "survey_response",

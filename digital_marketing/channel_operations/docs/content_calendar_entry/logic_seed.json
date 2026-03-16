@@ -66,7 +66,8 @@
       "total_amount": "total_amount",
       "publish_date": "schedule_marker",
       "owner": "actor_reference",
-      "approval_status": "status_flag"
+      "approval_status": "status_flag",
+      "related_campaign_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -105,6 +106,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "digital_channel",
     "campaign_record"

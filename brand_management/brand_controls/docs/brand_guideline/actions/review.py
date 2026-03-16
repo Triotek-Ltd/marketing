@@ -8,7 +8,7 @@ ACTION_ID = "review"
 ACTION_RULE = {'allowed_in_states': ['draft', 'approved', 'published'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Publish or revise the brand guideline set.'], 'primary_actions': ['create', 'approve', 'publish'], 'primary_transitions': ['brand_guideline: draft -> approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications']}
+WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Publish or revise the brand guideline set.'], 'primary_actions': ['create', 'approve', 'publish'], 'primary_transitions': ['brand_guideline: draft -> approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications'], 'action_actors': {'create': ['brand owner'], 'update': ['brand owner'], 'review': ['reviewer'], 'publish': ['brand owner'], 'archive': ['brand owner']}}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'entity_lifecycle', 'case_management': False}, 'reporting_profile': {'supports_snapshots': False, 'supports_outputs': False}, 'integration_profile': {'external_sync_enabled': False}, 'lifecycle_states': ['draft', 'approved', 'active', 'archived'], 'is_transactional': False}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'owner': 'actor_reference'}, 'search_fields': ['title', 'reference_no', 'description', 'asset_code', 'asset_type', 'usage_area'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'approved', 'active', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'owner': 'actor_reference', 'related_brand_guideline': 'relation_collection', 'related_brand_campaign_brief': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'asset_code', 'asset_type', 'usage_area'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'approved', 'active', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Create and review brand assets.', 'Release the approved asset set for use.'], 'primary_actions': ['create', 'review', 'approve', 'reject', 'publish', 'archive'], 'primary_transitions': ['brand_asset: draft -> in_review -> approved or rejected', 'brand_asset: approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications']}
+WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Create and review brand assets.', 'Release the approved asset set for use.'], 'primary_actions': ['create', 'review', 'approve', 'reject', 'publish', 'archive'], 'primary_transitions': ['brand_asset: draft -> in_review -> approved or rejected', 'brand_asset: approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications'], 'action_actors': {'create': ['brand owner'], 'review': ['reviewer'], 'approve': ['reviewer'], 'archive': ['brand owner']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': ['supports campaigns, product marketing, and external communications'], 'related_docs': ['brand_guideline', 'brand_campaign_brief'], 'action_targets': {'create': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "brand_asset"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

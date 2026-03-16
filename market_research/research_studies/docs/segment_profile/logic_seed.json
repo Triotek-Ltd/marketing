@@ -49,7 +49,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_research_study": "relation_collection",
+      "related_value_proposition": "relation_collection",
+      "related_campaign_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -101,8 +104,26 @@
     ],
     "downstream_effects": [
       "supports product, pricing, sales, and campaign decisions"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "researcher"
+      ],
+      "update": [
+        "researcher"
+      ],
+      "review": [
+        "analyst"
+      ],
+      "archive": [
+        "marketing owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports product, pricing, sales, and campaign decisions"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "research_study",
     "value_proposition",

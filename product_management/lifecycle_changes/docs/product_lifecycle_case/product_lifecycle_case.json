@@ -72,7 +72,11 @@
         "owner",
         "milestone_state"
       ],
-      "relations": [],
+      "relations": [
+        "related_product_record",
+        "related_pricing_decision",
+        "related_catalog_change"
+      ],
       "amounts": [],
       "dates": [],
       "parties": [],
@@ -330,6 +334,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_product_record",
+        "label": "Related Product Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "product_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_pricing_decision",
+        "label": "Related Pricing Decision",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "pricing_decision",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_catalog_change",
+        "label": "Related Catalog Change",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "catalog_change",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -458,17 +534,43 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "approve",
+          "activate",
+          "close",
+          "cancel",
           "archive"
+        ]
+      },
+      {
+        "role_id": "product manager",
+        "actions": [
+          "view",
+          "list",
+          "create"
+        ]
+      },
+      {
+        "role_id": "pricing owner",
+        "actions": [
+          "view",
+          "list",
+          "review",
+          "activate",
+          "close",
+          "cancel",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "approver",
+        "actions": [
+          "view",
+          "list",
+          "approve"
         ]
       }
     ],
@@ -546,7 +648,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_product_record",
+        "doc_id": "product_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_pricing_decision",
+        "doc_id": "pricing_decision",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_catalog_change",
+        "doc_id": "catalog_change",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -554,7 +675,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "product_record",
+        "pricing_decision",
+        "catalog_change"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -601,8 +726,32 @@
         ],
         "downstream_effects": [
           "feeds sales materials, catalog publication, and forecast planning"
-        ]
-      }
+        ],
+        "action_actors": {
+          "create": [
+            "product manager"
+          ],
+          "review": [
+            "pricing owner"
+          ],
+          "approve": [
+            "approver"
+          ],
+          "activate": [
+            "pricing owner"
+          ],
+          "close": [
+            "pricing owner"
+          ],
+          "cancel": [
+            "pricing owner"
+          ],
+          "archive": [
+            "pricing owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -678,6 +827,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -697,6 +849,45 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/marketing/product_management/lifecycle_changes/product_lifecycle_case/",
+    "status_field": "workflow_state",
+    "initial_state": "proposed",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "review",
+        "source_state": "proposed",
+        "target_state": "in_review",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "approve",
+        "source_state": "proposed",
+        "target_state": "approved",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "proposed",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "product_record",
+      "pricing_decision",
+      "catalog_change"
+    ],
+    "downstream_effects": [
+      "feeds sales materials, catalog publication, and forecast planning"
+    ],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -704,7 +895,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

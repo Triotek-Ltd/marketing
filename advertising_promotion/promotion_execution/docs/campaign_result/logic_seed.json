@@ -57,7 +57,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "spend_total": "monetary_value"
+      "spend_total": "monetary_value",
+      "related_campaign_record": "relation_collection",
+      "related_media_plan": "relation_collection",
+      "related_lead_capture_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -111,8 +114,23 @@
     ],
     "downstream_effects": [
       "supports digital execution, brand review, and revenue analysis"
-    ]
+    ],
+    "action_actors": {
+      "record": [
+        "campaign owner"
+      ],
+      "review": [
+        "analyst"
+      ],
+      "archive": [
+        "campaign owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports digital execution, brand review, and revenue analysis"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "campaign_record",
     "media_plan",

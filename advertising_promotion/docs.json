@@ -1,8 +1,8 @@
 {
   "docs": [
     "campaign_record",
-    "media_plan",
     "campaign_result",
+    "media_plan",
     "promotion_offer"
   ]
 }

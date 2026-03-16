@@ -58,7 +58,11 @@
         "roi_summary",
         "performance_state"
       ],
-      "relations": [],
+      "relations": [
+        "related_campaign_record",
+        "related_media_plan",
+        "related_lead_capture_record"
+      ],
       "amounts": [
         "spend_total"
       ],
@@ -365,6 +369,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_campaign_record",
+        "label": "Related Campaign Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "campaign_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_media_plan",
+        "label": "Related Media Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "media_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_lead_capture_record",
+        "label": "Related Lead Capture Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "lead_capture_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -445,17 +521,36 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
           "record",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "finalize",
           "archive"
+        ]
+      },
+      {
+        "role_id": "campaign owner",
+        "actions": [
+          "view",
+          "list",
+          "record",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "approver",
+        "actions": [
+          "view",
+          "list"
+        ]
+      },
+      {
+        "role_id": "analyst",
+        "actions": [
+          "view",
+          "list",
+          "review"
         ]
       }
     ],
@@ -533,7 +628,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_campaign_record",
+        "doc_id": "campaign_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_media_plan",
+        "doc_id": "media_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_lead_capture_record",
+        "doc_id": "lead_capture_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -541,7 +655,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "campaign_record",
+        "media_plan",
+        "lead_capture_record"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -587,8 +705,20 @@
         ],
         "downstream_effects": [
           "supports digital execution, brand review, and revenue analysis"
-        ]
-      }
+        ],
+        "action_actors": {
+          "record": [
+            "campaign owner"
+          ],
+          "review": [
+            "analyst"
+          ],
+          "archive": [
+            "campaign owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -664,6 +794,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -680,6 +813,40 @@
       "doc_kind": "ledger"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/marketing/advertising_promotion/promotion_execution/campaign_result/",
+    "status_field": "workflow_state",
+    "initial_state": "open",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "posting_date"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "review",
+        "source_state": "open",
+        "target_state": "reviewed",
+        "disallowed_state": "archived"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "open",
+        "target_state": "archived",
+        "disallowed_state": "archived"
+      }
+    ],
+    "related_docs": [
+      "campaign_record",
+      "media_plan",
+      "lead_capture_record"
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis"
+    ],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -687,7 +854,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

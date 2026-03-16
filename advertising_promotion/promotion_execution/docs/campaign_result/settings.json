@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_campaign_record",
+      "doc_id": "campaign_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_media_plan",
+      "doc_id": "media_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_lead_capture_record",
+      "doc_id": "lead_capture_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "campaign_record",
+      "media_plan",
+      "lead_capture_record"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -82,7 +105,19 @@
       ],
       "downstream_effects": [
         "supports digital execution, brand review, and revenue analysis"
-      ]
-    }
+      ],
+      "action_actors": {
+        "record": [
+          "campaign owner"
+        ],
+        "review": [
+          "analyst"
+        ],
+        "archive": [
+          "campaign owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

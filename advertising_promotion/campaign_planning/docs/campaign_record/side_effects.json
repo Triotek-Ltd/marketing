@@ -1,0 +1,121 @@
+{
+  "create": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "draft"
+      }
+    }
+  ],
+  "review": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "draft"
+      }
+    }
+  ],
+  "approve": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "approved"
+      }
+    }
+  ],
+  "launch": [
+    {
+      "type": "create_record",
+      "effect_id": "campaign_result",
+      "target_doc": "campaign_result",
+      "lookup": {
+        "reference_no": {
+          "$template": "CMPR-{campaign_code|reference_no|pk}"
+        }
+      },
+      "values": {
+        "title": {
+          "$template": "Campaign Result {campaign_code|reference_no|pk}"
+        },
+        "reference_no": {
+          "$template": "CMPR-{campaign_code|reference_no|pk}"
+        },
+        "result_code": {
+          "$template": "CMPR-{campaign_code|reference_no|pk}"
+        },
+        "linked_campaign": {
+          "$from": [
+            "campaign_code",
+            "reference_no",
+            "pk"
+          ]
+        },
+        "reporting_period": {
+          "$from": [
+            "start_date"
+          ]
+        },
+        "spend_total": "0.00",
+        "workflow_state": "active"
+      }
+    }
+  ],
+  "pause": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "paused"
+      }
+    }
+  ],
+  "close": [
+    {
+      "type": "upsert_record",
+      "effect_id": "campaign_result_rollup",
+      "target_doc": "campaign_result",
+      "lookup": {
+        "linked_campaign": {
+          "$from": [
+            "campaign_code",
+            "reference_no",
+            "pk"
+          ]
+        }
+      },
+      "values": {
+        "title": {
+          "$template": "Campaign Result {campaign_code|reference_no|pk}"
+        },
+        "reference_no": {
+          "$template": "CMPR-{campaign_code|reference_no|pk}"
+        },
+        "result_code": {
+          "$template": "CMPR-{campaign_code|reference_no|pk}"
+        },
+        "linked_campaign": {
+          "$from": [
+            "campaign_code",
+            "reference_no",
+            "pk"
+          ]
+        },
+        "reporting_period": {
+          "$from": [
+            "end_date",
+            "start_date"
+          ]
+        },
+        "spend_total": "0.00",
+        "workflow_state": "completed"
+      }
+    }
+  ],
+  "archive": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "archived"
+      }
+    }
+  ]
+}

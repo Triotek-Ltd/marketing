@@ -1,8 +1,8 @@
 {
   "docs": [
     "market_insight",
-    "survey_response",
     "research_study",
-    "segment_profile"
+    "segment_profile",
+    "survey_response"
   ]
 }

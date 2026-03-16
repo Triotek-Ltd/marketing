@@ -11,7 +11,7 @@ TERMINAL_STATES = ['archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'expired'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'expired'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'expired'], 'transitions_to': 'approved'}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'expire': {'allowed_in_states': ['draft', 'approved', 'active', 'expired'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'expired'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['campaign_record', 'pricing_decision', 'sales_order'], 'borrowed_fields': ['campaign objective from campaign_record', 'base pricing from pricing_decision'], 'inferred_roles': ['account owner']}, 'actors': ['account owner'], 'action_actors': {'create': ['account owner'], 'review': ['account owner'], 'approve': ['account owner'], 'activate': ['account owner'], 'archive': ['account owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

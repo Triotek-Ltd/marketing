@@ -23,7 +23,20 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_brand_asset",
+      "doc_id": "brand_asset",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_brand_campaign_brief",
+      "doc_id": "brand_campaign_brief",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -31,7 +44,10 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "brand_asset",
+      "brand_campaign_brief"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -70,7 +86,25 @@
       ],
       "downstream_effects": [
         "supports campaigns, product marketing, and external communications"
-      ]
-    }
+      ],
+      "action_actors": {
+        "create": [
+          "brand owner"
+        ],
+        "update": [
+          "brand owner"
+        ],
+        "review": [
+          "reviewer"
+        ],
+        "publish": [
+          "brand owner"
+        ],
+        "archive": [
+          "brand owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

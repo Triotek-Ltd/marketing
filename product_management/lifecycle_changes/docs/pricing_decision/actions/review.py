@@ -8,7 +8,7 @@ ACTION_ID = "review"
 ACTION_RULE = {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'reviewed'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Decide pricing for the product state.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['pricing_decision: draft -> approved -> active'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning']}
+WORKFLOW_HINTS = {'business_objective': 'govern product lifecycle, pricing decisions, and catalog changes in a controlled way', 'actors': ['product manager', 'pricing owner', 'approver'], 'start_condition': 'a product is launched, updated, or repositioned', 'ordered_steps': ['Decide pricing for the product state.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['pricing_decision: draft -> approved -> active'], 'downstream_effects': ['feeds sales materials, catalog publication, and forecast planning'], 'action_actors': {'create': ['product manager'], 'review': ['pricing owner'], 'approve': ['approver'], 'reject': ['approver'], 'activate': ['pricing owner'], 'archive': ['pricing owner']}}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

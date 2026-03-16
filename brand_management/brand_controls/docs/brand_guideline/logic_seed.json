@@ -55,7 +55,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "review_date": "schedule_marker"
+      "review_date": "schedule_marker",
+      "related_brand_asset": "relation_collection",
+      "related_brand_campaign_brief": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -110,8 +112,29 @@
     ],
     "downstream_effects": [
       "supports campaigns, product marketing, and external communications"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "brand owner"
+      ],
+      "update": [
+        "brand owner"
+      ],
+      "review": [
+        "reviewer"
+      ],
+      "publish": [
+        "brand owner"
+      ],
+      "archive": [
+        "brand owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports campaigns, product marketing, and external communications"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "brand_asset",
     "brand_campaign_brief"

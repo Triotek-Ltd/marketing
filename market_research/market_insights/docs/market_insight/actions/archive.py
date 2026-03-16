@@ -8,7 +8,7 @@ ACTION_ID = "archive"
 ACTION_RULE = {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'archived'}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': [], 'primary_actions': [], 'primary_transitions': [], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows']}
+WORKFLOW_HINTS = {'business_objective': 'turn raw prospects into qualified leads with documented outreach and qualification evidence', 'actors': ['sales rep', 'sales manager', 'reviewer'], 'start_condition': 'a target customer or lead source is identified', 'ordered_steps': [], 'primary_actions': [], 'primary_transitions': [], 'downstream_effects': ['feeds opportunity, negotiation, and forecast workflows'], 'action_actors': {'create': ['sales rep'], 'review': ['reviewer'], 'publish': ['sales rep'], 'archive': ['sales manager']}}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

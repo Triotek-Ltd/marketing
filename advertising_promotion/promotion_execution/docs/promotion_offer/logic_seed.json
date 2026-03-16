@@ -63,7 +63,10 @@
       "transaction_date": "transaction_date",
       "party": "primary_party",
       "currency": "currency_code",
-      "total_amount": "total_amount"
+      "total_amount": "total_amount",
+      "related_campaign_record": "relation_collection",
+      "related_pricing_decision": "relation_collection",
+      "related_sales_order": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -101,7 +104,44 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "campaign_record",
+        "pricing_decision",
+        "sales_order"
+      ],
+      "borrowed_fields": [
+        "campaign objective from campaign_record",
+        "base pricing from pricing_decision"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "review": [
+        "account owner"
+      ],
+      "approve": [
+        "account owner"
+      ],
+      "activate": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "campaign_record",
     "pricing_decision",

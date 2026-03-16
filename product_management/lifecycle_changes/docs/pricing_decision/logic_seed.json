@@ -64,7 +64,10 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "effective_date": "schedule_marker"
+      "effective_date": "schedule_marker",
+      "related_product_record": "relation_collection",
+      "related_product_lifecycle_case": "relation_collection",
+      "related_quote_record": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -123,8 +126,32 @@
     ],
     "downstream_effects": [
       "feeds sales materials, catalog publication, and forecast planning"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "product manager"
+      ],
+      "review": [
+        "pricing owner"
+      ],
+      "approve": [
+        "approver"
+      ],
+      "reject": [
+        "approver"
+      ],
+      "activate": [
+        "pricing owner"
+      ],
+      "archive": [
+        "pricing owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "feeds sales materials, catalog publication, and forecast planning"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "product_record",
     "product_lifecycle_case",

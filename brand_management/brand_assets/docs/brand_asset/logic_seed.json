@@ -54,7 +54,9 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_brand_guideline": "relation_collection",
+      "related_brand_campaign_brief": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -113,8 +115,26 @@
     ],
     "downstream_effects": [
       "supports campaigns, product marketing, and external communications"
-    ]
+    ],
+    "action_actors": {
+      "create": [
+        "brand owner"
+      ],
+      "review": [
+        "reviewer"
+      ],
+      "approve": [
+        "reviewer"
+      ],
+      "archive": [
+        "brand owner"
+      ]
+    }
   },
+  "downstream_effects": [
+    "supports campaigns, product marketing, and external communications"
+  ],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "brand_guideline",
     "brand_campaign_brief"
