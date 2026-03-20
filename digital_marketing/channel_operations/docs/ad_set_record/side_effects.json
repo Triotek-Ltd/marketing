@@ -21,6 +21,18 @@
       "fields": {
         "workflow_state": "approved"
       }
+    },
+    {
+      "type": "create_record",
+      "target_doc": "campaign_record",
+      "values": {
+        "title": {
+          "$template": "Campaign Record for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "CAMPAIGN_RECORD-{reference_no|id}"
+        }
+      }
     }
   ],
   "launch": [

@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "content_calendar_entry"
 ALLOWED_ACTIONS = ['create', 'review', 'approve', 'schedule', 'publish', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'approved'}, 'schedule': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'publish': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'approved'}, 'schedule': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'publish': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

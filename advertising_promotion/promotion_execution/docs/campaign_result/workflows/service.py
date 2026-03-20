@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "campaign_result"
 ARCHETYPE = "ledger"
 INITIAL_STATE = 'open'
 STATES = ['open', 'reviewed', 'finalized', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'record': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'reviewed'}, 'finalize': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'record': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'review': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'reviewed'}, 'finalize': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['open', 'reviewed', 'finalized'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'plan, approve, launch, and monitor promotional campaigns against budget and objectives', 'actors': ['campaign owner', 'approver', 'analyst'], 'start_condition': 'a campaign objective and budget are approved', 'ordered_steps': ['Capture campaign results and performance review.'], 'primary_actions': ['record', 'review', 'close'], 'primary_transitions': ['campaign_result: active -> reviewed -> closed'], 'downstream_effects': ['supports digital execution, brand review, and revenue analysis'], 'action_actors': {'record': ['campaign owner'], 'review': ['analyst'], 'archive': ['campaign owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

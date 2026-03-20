@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "survey_response"
 ARCHETYPE = "transaction"
 INITIAL_STATE = 'received'
 STATES = ['received', 'validated', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'capture': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'validate': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['received', 'validated'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'capture': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'validate': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['received', 'validated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Collect survey or interview responses.'], 'primary_actions': ['record', 'review'], 'primary_transitions': ['survey_response: active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions'], 'action_actors': {'archive': ['marketing owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

@@ -267,14 +267,14 @@
     {
       "field_id": "owner",
       "label": "Owner",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
       "unique": false,
       "options": null,
       "purpose": "actor_reference",
-      "linked_doc": null,
+      "linked_doc": "employee_record",
       "depends_on": null,
       "mandatory_depends_on": null,
       "read_only_depends_on": null,
@@ -343,7 +343,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_media_plan",
@@ -367,7 +368,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_campaign_result",
@@ -391,7 +393,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_brand_campaign_brief",
@@ -415,7 +418,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -576,7 +580,9 @@
         "pause",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "campaign owner",
@@ -584,11 +590,14 @@
         "view",
         "list",
         "create",
+        "update",
         "launch",
         "pause",
         "close",
         "archive"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "approver",
@@ -596,7 +605,9 @@
         "view",
         "list",
         "approve"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "analyst",
@@ -604,8 +615,11 @@
         "view",
         "list",
         "review",
-        "close"
-      ]
+        "close",
+        "update"
+      ],
+      "scope": "review",
+      "ownership": "oversight"
     }
   ],
   "transaction_behavior": {

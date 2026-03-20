@@ -220,14 +220,14 @@
     {
       "field_id": "owner",
       "label": "Owner",
-      "type": "Data",
+      "type": "Link",
       "required": false,
       "read_only": false,
       "default": null,
       "unique": false,
       "options": null,
       "purpose": "actor_reference",
-      "linked_doc": null,
+      "linked_doc": "employee_record",
       "depends_on": null,
       "mandatory_depends_on": null,
       "read_only_depends_on": null,
@@ -287,7 +287,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_pricing_decision",
@@ -311,7 +312,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     },
     {
       "field_id": "related_catalog_change",
@@ -335,7 +337,8 @@
         "list_visible": false,
         "filterable": false,
         "sortable": false
-      }
+      },
+      "relation_kind": "explicit"
     }
   ],
   "field_groups": {
@@ -500,15 +503,20 @@
         "close",
         "cancel",
         "archive"
-      ]
+      ],
+      "scope": "system",
+      "ownership": "platform"
     },
     {
       "role_id": "product manager",
       "actions": [
         "view",
         "list",
-        "create"
-      ]
+        "create",
+        "update"
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     },
     {
       "role_id": "pricing owner",
@@ -518,9 +526,12 @@
         "review",
         "activate",
         "close",
+        "update",
         "cancel",
         "archive"
-      ]
+      ],
+      "scope": "document",
+      "ownership": "functional"
     },
     {
       "role_id": "approver",
@@ -528,7 +539,9 @@
         "view",
         "list",
         "approve"
-      ]
+      ],
+      "scope": "approval",
+      "ownership": "managerial"
     }
   ],
   "transaction_behavior": {

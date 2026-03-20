@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "campaign_record"
 ARCHETYPE = "workflow_case"
 INITIAL_STATE = 'draft'
 STATES = ['draft', 'approved', 'active', 'paused', 'completed', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': 'approved'}, 'launch': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'pause': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': 'approved'}, 'launch': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'pause': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'paused', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'plan, approve, launch, and monitor promotional campaigns against budget and objectives', 'actors': ['campaign owner', 'approver', 'analyst'], 'start_condition': 'a campaign objective and budget are approved', 'ordered_steps': ['Create the campaign record and objective.'], 'primary_actions': ['create', 'review', 'approve', 'launch', 'close'], 'primary_transitions': ['campaign_record: draft -> approved -> active -> completed'], 'downstream_effects': ['supports digital execution, brand review, and revenue analysis'], 'action_actors': {'create': ['campaign owner'], 'review': ['analyst'], 'approve': ['approver'], 'launch': ['campaign owner'], 'pause': ['campaign owner'], 'close': ['analyst', 'campaign owner'], 'archive': ['campaign owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

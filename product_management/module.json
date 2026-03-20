@@ -4,5 +4,681 @@
   "app_id": "marketing",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Product Management KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "product_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Product Management summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "product_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Product Management charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "product_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "product_management_trend_line",
+            "label": "Product Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_management_volume_column",
+            "label": "Product Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_management_distribution_donut",
+            "label": "Product Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pricing_decision_trend_line",
+            "label": "Pricing Decision trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pricing_decision_volume_column",
+            "label": "Pricing Decision volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pricing_decision_distribution_donut",
+            "label": "Pricing Decision distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "product_lifecycle_case_trend_line",
+            "label": "Product Lifecycle Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_lifecycle_case_volume_column",
+            "label": "Product Lifecycle Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_lifecycle_case_distribution_donut",
+            "label": "Product Lifecycle Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "catalog_change_trend_line",
+            "label": "Catalog Change trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "catalog_change_volume_column",
+            "label": "Catalog Change volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "catalog_change_distribution_donut",
+            "label": "Catalog Change distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "product_record_trend_line",
+            "label": "Product Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_record_volume_column",
+            "label": "Product Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_record_distribution_donut",
+            "label": "Product Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Product Management reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "product_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "product_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "product_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "product_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "product_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Product Management Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Product Management Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Pricing Decision Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Pricing Decision Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "product_management_trend_line",
+        "label": "Product Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_management_volume_column",
+        "label": "Product Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_management_distribution_donut",
+        "label": "Product Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pricing_decision_trend_line",
+        "label": "Pricing Decision trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pricing_decision_volume_column",
+        "label": "Pricing Decision volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pricing_decision_distribution_donut",
+        "label": "Pricing Decision distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "product_lifecycle_case_trend_line",
+        "label": "Product Lifecycle Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_lifecycle_case_volume_column",
+        "label": "Product Lifecycle Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_lifecycle_case_distribution_donut",
+        "label": "Product Lifecycle Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "catalog_change_trend_line",
+        "label": "Catalog Change trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "catalog_change_volume_column",
+        "label": "Catalog Change volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "catalog_change_distribution_donut",
+        "label": "Catalog Change distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "product_record_trend_line",
+        "label": "Product Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_record_volume_column",
+        "label": "Product Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_record_distribution_donut",
+        "label": "Product Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "pricing_decision",
+        "title": "Pricing Decision",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "product_lifecycle_case",
+        "title": "Product Lifecycle Case",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "catalog_change",
+        "title": "Catalog Change",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "product_record",
+        "title": "Product Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "product_record",
+      "product_lifecycle_case",
+      "quote_record",
+      "pricing_decision",
+      "catalog_change"
+    ],
+    "upstream_docs": [
+      "product_record",
+      "product_lifecycle_case",
+      "quote_record",
+      "pricing_decision",
+      "catalog_change"
+    ],
+    "downstream_docs": [
+      "product_lifecycle_case",
+      "product_record"
+    ],
+    "actors": [
+      "product manager",
+      "pricing owner",
+      "approver"
+    ],
+    "downstream_effects": [
+      "feeds sales materials, catalog publication, and forecast planning"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "product_lifecycle_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "product_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "product_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "product_record",
+      "product_lifecycle_case",
+      "quote_record",
+      "pricing_decision",
+      "catalog_change"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_lifecycle_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "catalog_change",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "catalog_change",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "catalog_change",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "catalog_change",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "product_record",
+          "kind": "doc"
+        },
+        {
+          "id": "product_lifecycle_case",
+          "kind": "doc"
+        },
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "catalog_change",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_lifecycle_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "catalog_change",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "catalog_change",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "catalog_change",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "catalog_change",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

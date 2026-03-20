@@ -10,7 +10,8 @@
   "doc_archetype": "workflow_case",
   "classification": {
     "archetype": "workflow_case",
-    "bundle": "operations"
+    "bundle": "operations",
+    "doc_kind": "workflow_case"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,294 @@
       "spend-approval model",
       "multi-channel allocation structure"
     ]
-  }
+  },
+  "ui": {
+    "icon_key": "checklist",
+    "accent": "#2d6a4f",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Campaign Record KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "campaign_record",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Campaign Record summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "campaign_record",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Campaign Record charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "campaign_record",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Campaign Record reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "campaign_record",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Campaign Record records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "campaign_record",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "campaign_record",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "campaign_record",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "campaign_record",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "campaign_record",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Campaign Record Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Campaign Record Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Campaign Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Campaign Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "campaign_record_trend_line",
+        "label": "Campaign Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "campaign_record_volume_column",
+        "label": "Campaign Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "campaign_record_distribution_donut",
+        "label": "Campaign Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief"
+    ],
+    "upstream_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief"
+    ],
+    "downstream_docs": [
+      "media_plan",
+      "campaign_result"
+    ],
+    "borrowed_fields": [
+      "audience",
+      "messaging from brand_campaign_brief"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "media_plan",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "launch",
+        "target_doc": "campaign_result",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "campaign_result",
+        "effect_type": "upsert_record"
+      }
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis"
+    ],
+    "actors": [
+      "campaign owner",
+      "approver",
+      "analyst"
+    ],
+    "handoff_targets": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "promotion_offer",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "create_record",
+        "action_id": "launch"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "upsert_record",
+        "action_id": "close"
+      }
+    ]
+  },
+  "contract_version": 1
 }

@@ -4,5 +4,544 @@
   "app_id": "marketing",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Brand Management KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "brand_management",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Brand Management summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "brand_management",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Brand Management charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "brand_management",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "brand_management_trend_line",
+            "label": "Brand Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_management_volume_column",
+            "label": "Brand Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_management_distribution_donut",
+            "label": "Brand Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_asset_trend_line",
+            "label": "Brand Asset trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_asset_volume_column",
+            "label": "Brand Asset volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_asset_distribution_donut",
+            "label": "Brand Asset distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_campaign_brief_trend_line",
+            "label": "Brand Campaign Brief trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_campaign_brief_volume_column",
+            "label": "Brand Campaign Brief volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_campaign_brief_distribution_donut",
+            "label": "Brand Campaign Brief distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_guideline_trend_line",
+            "label": "Brand Guideline trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_guideline_volume_column",
+            "label": "Brand Guideline volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_guideline_distribution_donut",
+            "label": "Brand Guideline distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Brand Management reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "brand_management",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "brand_management",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "brand_management",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "brand_management",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "brand_management",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Brand Management Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Brand Management Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Brand Asset Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Brand Asset Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "brand_management_trend_line",
+        "label": "Brand Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_management_volume_column",
+        "label": "Brand Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_management_distribution_donut",
+        "label": "Brand Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_asset_trend_line",
+        "label": "Brand Asset trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_asset_volume_column",
+        "label": "Brand Asset volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_asset_distribution_donut",
+        "label": "Brand Asset distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_campaign_brief_trend_line",
+        "label": "Brand Campaign Brief trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_campaign_brief_volume_column",
+        "label": "Brand Campaign Brief volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_campaign_brief_distribution_donut",
+        "label": "Brand Campaign Brief distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_guideline_trend_line",
+        "label": "Brand Guideline trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_guideline_volume_column",
+        "label": "Brand Guideline volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_guideline_distribution_donut",
+        "label": "Brand Guideline distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "brand_asset",
+        "title": "Brand Asset",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "brand_campaign_brief",
+        "title": "Brand Campaign Brief",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "brand_guideline",
+        "title": "Brand Guideline",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "brand_guideline",
+      "brand_campaign_brief",
+      "campaign_record",
+      "brand_asset"
+    ],
+    "upstream_docs": [
+      "brand_guideline",
+      "brand_campaign_brief",
+      "campaign_record",
+      "brand_asset"
+    ],
+    "downstream_docs": [
+      "campaign_record"
+    ],
+    "actors": [
+      "brand owner",
+      "designer",
+      "reviewer"
+    ],
+    "downstream_effects": [
+      "supports campaigns, product marketing, and external communications"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "brand_guideline",
+      "brand_campaign_brief",
+      "campaign_record",
+      "brand_asset"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "brand_asset",
+        "target_doc": "brand_guideline",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_asset",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "brand_asset",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "brand_guideline",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "brand_guideline",
+        "target_doc": "brand_asset",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_guideline",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "brand_guideline",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_campaign_brief",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_record",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_asset",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "brand_asset",
+          "target_doc": "brand_guideline",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_asset",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "brand_asset",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "brand_guideline",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "brand_guideline",
+          "target_doc": "brand_asset",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_guideline",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

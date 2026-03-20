@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "content_calendar_entry"
 ARCHETYPE = "transaction"
 INITIAL_STATE = 'draft'
 STATES = ['draft', 'approved', 'scheduled', 'published', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'approved'}, 'schedule': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'publish': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'approved'}, 'schedule': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': None}, 'publish': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'scheduled', 'published'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

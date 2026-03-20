@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "survey_response"
 ALLOWED_ACTIONS = ['capture', 'validate', 'archive']
-ACTION_RULES = {'capture': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'validate': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['received', 'validated'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'capture': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'validate': {'allowed_in_states': ['received', 'validated'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['received', 'validated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

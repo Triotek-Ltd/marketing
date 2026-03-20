@@ -8,5 +8,2521 @@
     "id": "CUSTOM-PROPRIETARY",
     "type": "proprietary_custom",
     "terms_ref": "LICENSE"
+  },
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "app",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "modules",
+      "flatten_submodules_in_ui": false
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "My Plug App KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "marketing",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "My Plug App summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "marketing",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "My Plug App charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "marketing",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "marketing_trend_line",
+            "label": "My Plug App trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "marketing_volume_column",
+            "label": "My Plug App volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "marketing_distribution_donut",
+            "label": "My Plug App distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "advertising_promotion_trend_line",
+            "label": "Advertising Promotion trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "advertising_promotion_volume_column",
+            "label": "Advertising Promotion volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "advertising_promotion_distribution_donut",
+            "label": "Advertising Promotion distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "campaign_record_trend_line",
+            "label": "Campaign Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "campaign_record_volume_column",
+            "label": "Campaign Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "campaign_record_distribution_donut",
+            "label": "Campaign Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "media_plan_trend_line",
+            "label": "Media Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "media_plan_volume_column",
+            "label": "Media Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "media_plan_distribution_donut",
+            "label": "Media Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "campaign_result_trend_line",
+            "label": "Campaign Result trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "campaign_result_volume_column",
+            "label": "Campaign Result volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "campaign_result_distribution_donut",
+            "label": "Campaign Result distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "promotion_offer_trend_line",
+            "label": "Promotion Offer trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "promotion_offer_volume_column",
+            "label": "Promotion Offer volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "promotion_offer_distribution_donut",
+            "label": "Promotion Offer distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_management_trend_line",
+            "label": "Brand Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_management_volume_column",
+            "label": "Brand Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_management_distribution_donut",
+            "label": "Brand Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_asset_trend_line",
+            "label": "Brand Asset trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_asset_volume_column",
+            "label": "Brand Asset volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_asset_distribution_donut",
+            "label": "Brand Asset distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_campaign_brief_trend_line",
+            "label": "Brand Campaign Brief trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_campaign_brief_volume_column",
+            "label": "Brand Campaign Brief volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_campaign_brief_distribution_donut",
+            "label": "Brand Campaign Brief distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "brand_guideline_trend_line",
+            "label": "Brand Guideline trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "brand_guideline_volume_column",
+            "label": "Brand Guideline volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "brand_guideline_distribution_donut",
+            "label": "Brand Guideline distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "digital_marketing_trend_line",
+            "label": "Digital Marketing trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "digital_marketing_volume_column",
+            "label": "Digital Marketing volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "digital_marketing_distribution_donut",
+            "label": "Digital Marketing distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "ad_set_record_trend_line",
+            "label": "Ad Set Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "ad_set_record_volume_column",
+            "label": "Ad Set Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "ad_set_record_distribution_donut",
+            "label": "Ad Set Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "content_calendar_entry_trend_line",
+            "label": "Content Calendar Entry trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "content_calendar_entry_volume_column",
+            "label": "Content Calendar Entry volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "content_calendar_entry_distribution_donut",
+            "label": "Content Calendar Entry distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "digital_channel_trend_line",
+            "label": "Digital Channel trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "digital_channel_volume_column",
+            "label": "Digital Channel volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "digital_channel_distribution_donut",
+            "label": "Digital Channel distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "lead_capture_record_trend_line",
+            "label": "Lead Capture Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "lead_capture_record_volume_column",
+            "label": "Lead Capture Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "lead_capture_record_distribution_donut",
+            "label": "Lead Capture Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "market_research_trend_line",
+            "label": "Market Research trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "market_research_volume_column",
+            "label": "Market Research volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "market_research_distribution_donut",
+            "label": "Market Research distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "market_insight_trend_line",
+            "label": "Market Insight trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "market_insight_volume_column",
+            "label": "Market Insight volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "market_insight_distribution_donut",
+            "label": "Market Insight distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "survey_response_trend_line",
+            "label": "Survey Response trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "survey_response_volume_column",
+            "label": "Survey Response volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "survey_response_distribution_donut",
+            "label": "Survey Response distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "research_study_trend_line",
+            "label": "Research Study trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "research_study_volume_column",
+            "label": "Research Study volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "research_study_distribution_donut",
+            "label": "Research Study distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "segment_profile_trend_line",
+            "label": "Segment Profile trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "segment_profile_volume_column",
+            "label": "Segment Profile volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "segment_profile_distribution_donut",
+            "label": "Segment Profile distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "product_management_trend_line",
+            "label": "Product Management trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_management_volume_column",
+            "label": "Product Management volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_management_distribution_donut",
+            "label": "Product Management distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "pricing_decision_trend_line",
+            "label": "Pricing Decision trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "pricing_decision_volume_column",
+            "label": "Pricing Decision volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "pricing_decision_distribution_donut",
+            "label": "Pricing Decision distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "product_lifecycle_case_trend_line",
+            "label": "Product Lifecycle Case trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_lifecycle_case_volume_column",
+            "label": "Product Lifecycle Case volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_lifecycle_case_distribution_donut",
+            "label": "Product Lifecycle Case distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "catalog_change_trend_line",
+            "label": "Catalog Change trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "catalog_change_volume_column",
+            "label": "Catalog Change volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "catalog_change_distribution_donut",
+            "label": "Catalog Change distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "product_record_trend_line",
+            "label": "Product Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "product_record_volume_column",
+            "label": "Product Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "product_record_distribution_donut",
+            "label": "Product Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "My Plug App reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "app",
+          "entity_id": "marketing",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "marketing",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "marketing",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "marketing",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "app",
+        "entity_id": "marketing",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "My Plug App Overview",
+        "report_type": "dashboard_summary",
+        "surface": "app"
+      },
+      {
+        "id": "trend_report",
+        "label": "My Plug App Trends",
+        "report_type": "trend_analysis",
+        "surface": "app"
+      },
+      {
+        "id": "summary_report",
+        "label": "Campaign Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Campaign Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "marketing_trend_line",
+        "label": "My Plug App trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "marketing_volume_column",
+        "label": "My Plug App volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "marketing_distribution_donut",
+        "label": "My Plug App distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "advertising_promotion_trend_line",
+        "label": "Advertising Promotion trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "advertising_promotion_volume_column",
+        "label": "Advertising Promotion volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "advertising_promotion_distribution_donut",
+        "label": "Advertising Promotion distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "campaign_record_trend_line",
+        "label": "Campaign Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "campaign_record_volume_column",
+        "label": "Campaign Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "campaign_record_distribution_donut",
+        "label": "Campaign Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "media_plan_trend_line",
+        "label": "Media Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "media_plan_volume_column",
+        "label": "Media Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "media_plan_distribution_donut",
+        "label": "Media Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "campaign_result_trend_line",
+        "label": "Campaign Result trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "campaign_result_volume_column",
+        "label": "Campaign Result volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "campaign_result_distribution_donut",
+        "label": "Campaign Result distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "promotion_offer_trend_line",
+        "label": "Promotion Offer trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "promotion_offer_volume_column",
+        "label": "Promotion Offer volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "promotion_offer_distribution_donut",
+        "label": "Promotion Offer distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_management_trend_line",
+        "label": "Brand Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_management_volume_column",
+        "label": "Brand Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_management_distribution_donut",
+        "label": "Brand Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_asset_trend_line",
+        "label": "Brand Asset trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_asset_volume_column",
+        "label": "Brand Asset volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_asset_distribution_donut",
+        "label": "Brand Asset distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_campaign_brief_trend_line",
+        "label": "Brand Campaign Brief trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_campaign_brief_volume_column",
+        "label": "Brand Campaign Brief volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_campaign_brief_distribution_donut",
+        "label": "Brand Campaign Brief distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "brand_guideline_trend_line",
+        "label": "Brand Guideline trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "brand_guideline_volume_column",
+        "label": "Brand Guideline volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "brand_guideline_distribution_donut",
+        "label": "Brand Guideline distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "digital_marketing_trend_line",
+        "label": "Digital Marketing trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "digital_marketing_volume_column",
+        "label": "Digital Marketing volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "digital_marketing_distribution_donut",
+        "label": "Digital Marketing distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "ad_set_record_trend_line",
+        "label": "Ad Set Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "ad_set_record_volume_column",
+        "label": "Ad Set Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "ad_set_record_distribution_donut",
+        "label": "Ad Set Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "content_calendar_entry_trend_line",
+        "label": "Content Calendar Entry trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "content_calendar_entry_volume_column",
+        "label": "Content Calendar Entry volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "content_calendar_entry_distribution_donut",
+        "label": "Content Calendar Entry distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "digital_channel_trend_line",
+        "label": "Digital Channel trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "digital_channel_volume_column",
+        "label": "Digital Channel volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "digital_channel_distribution_donut",
+        "label": "Digital Channel distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "lead_capture_record_trend_line",
+        "label": "Lead Capture Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "lead_capture_record_volume_column",
+        "label": "Lead Capture Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "lead_capture_record_distribution_donut",
+        "label": "Lead Capture Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "market_research_trend_line",
+        "label": "Market Research trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_research_volume_column",
+        "label": "Market Research volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_research_distribution_donut",
+        "label": "Market Research distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "market_insight_trend_line",
+        "label": "Market Insight trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_insight_volume_column",
+        "label": "Market Insight volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_insight_distribution_donut",
+        "label": "Market Insight distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "survey_response_trend_line",
+        "label": "Survey Response trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "survey_response_volume_column",
+        "label": "Survey Response volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "survey_response_distribution_donut",
+        "label": "Survey Response distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "research_study_trend_line",
+        "label": "Research Study trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "research_study_volume_column",
+        "label": "Research Study volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "research_study_distribution_donut",
+        "label": "Research Study distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "segment_profile_trend_line",
+        "label": "Segment Profile trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "segment_profile_volume_column",
+        "label": "Segment Profile volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "segment_profile_distribution_donut",
+        "label": "Segment Profile distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "product_management_trend_line",
+        "label": "Product Management trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_management_volume_column",
+        "label": "Product Management volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_management_distribution_donut",
+        "label": "Product Management distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "pricing_decision_trend_line",
+        "label": "Pricing Decision trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "pricing_decision_volume_column",
+        "label": "Pricing Decision volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "pricing_decision_distribution_donut",
+        "label": "Pricing Decision distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "product_lifecycle_case_trend_line",
+        "label": "Product Lifecycle Case trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_lifecycle_case_volume_column",
+        "label": "Product Lifecycle Case volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_lifecycle_case_distribution_donut",
+        "label": "Product Lifecycle Case distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "catalog_change_trend_line",
+        "label": "Catalog Change trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "catalog_change_volume_column",
+        "label": "Catalog Change volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "catalog_change_distribution_donut",
+        "label": "Catalog Change distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "product_record_trend_line",
+        "label": "Product Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "product_record_volume_column",
+        "label": "Product Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "product_record_distribution_donut",
+        "label": "Product Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "advertising_promotion",
+        "title": "Advertising Promotion",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "brand_management",
+        "title": "Brand Management",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "digital_marketing",
+        "title": "Digital Marketing",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "market_research",
+        "title": "Market Research",
+        "surface": "module",
+        "source_docs": []
+      },
+      {
+        "id": "product_management",
+        "title": "Product Management",
+        "surface": "module",
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order",
+      "brand_guideline",
+      "brand_asset",
+      "digital_channel",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record",
+      "research_study",
+      "survey_response",
+      "product_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition",
+      "product_lifecycle_case",
+      "quote_record",
+      "catalog_change"
+    ],
+    "upstream_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order",
+      "brand_guideline",
+      "brand_asset",
+      "digital_channel",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record",
+      "research_study",
+      "survey_response",
+      "product_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition",
+      "product_lifecycle_case",
+      "quote_record",
+      "catalog_change"
+    ],
+    "downstream_docs": [
+      "media_plan",
+      "campaign_result",
+      "campaign_record",
+      "product_lifecycle_case",
+      "product_record"
+    ],
+    "actors": [
+      "campaign owner",
+      "approver",
+      "analyst",
+      "account owner",
+      "brand owner",
+      "designer",
+      "reviewer",
+      "sales rep",
+      "sales manager",
+      "researcher",
+      "marketing owner",
+      "product manager",
+      "pricing owner"
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis",
+      "supports campaigns, product marketing, and external communications",
+      "feeds opportunity, negotiation, and forecast workflows",
+      "supports product, pricing, sales, and campaign decisions",
+      "feeds sales materials, catalog publication, and forecast planning"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "media_plan",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "launch",
+        "target_doc": "campaign_result",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "campaign_result",
+        "effect_type": "upsert_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "product_lifecycle_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "product_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "product_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order",
+      "brand_guideline",
+      "brand_asset",
+      "digital_channel",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record",
+      "research_study",
+      "survey_response",
+      "product_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition",
+      "product_lifecycle_case",
+      "quote_record",
+      "catalog_change"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "promotion_offer",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "create_record",
+        "action_id": "launch"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "upsert_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_result",
+        "relation": "references"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "media_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "sales_order",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "brand_asset",
+        "target_doc": "brand_guideline",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_asset",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "brand_asset",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "brand_guideline",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "brand_campaign_brief",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "brand_guideline",
+        "target_doc": "brand_asset",
+        "relation": "references"
+      },
+      {
+        "source_doc": "brand_guideline",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "content_calendar_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "ad_set_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "survey_response",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "segment_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "market_insight",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "segment_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "survey_response",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "market_insight",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "value_proposition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "quote_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_lifecycle_case",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "pricing_decision",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "catalog_change",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "product_lifecycle_case",
+        "target_doc": "product_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "catalog_change",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "catalog_change",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "product_lifecycle_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "product_record",
+        "target_doc": "catalog_change",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "advertising_promotion",
+          "kind": "module",
+          "title": "Advertising Promotion"
+        },
+        {
+          "id": "brand_management",
+          "kind": "module",
+          "title": "Brand Management"
+        },
+        {
+          "id": "digital_marketing",
+          "kind": "module",
+          "title": "Digital Marketing"
+        },
+        {
+          "id": "market_research",
+          "kind": "module",
+          "title": "Market Research"
+        },
+        {
+          "id": "product_management",
+          "kind": "module",
+          "title": "Product Management"
+        },
+        {
+          "id": "promotion_offer",
+          "kind": "doc"
+        },
+        {
+          "id": "media_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_result",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_campaign_brief",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_record",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_capture_record",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "sales_order",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_guideline",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_asset",
+          "kind": "doc"
+        },
+        {
+          "id": "digital_channel",
+          "kind": "doc"
+        },
+        {
+          "id": "content_calendar_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "ad_set_record",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        },
+        {
+          "id": "research_study",
+          "kind": "doc"
+        },
+        {
+          "id": "survey_response",
+          "kind": "doc"
+        },
+        {
+          "id": "product_record",
+          "kind": "doc"
+        },
+        {
+          "id": "segment_profile",
+          "kind": "doc"
+        },
+        {
+          "id": "market_insight",
+          "kind": "doc"
+        },
+        {
+          "id": "value_proposition",
+          "kind": "doc"
+        },
+        {
+          "id": "product_lifecycle_case",
+          "kind": "doc"
+        },
+        {
+          "id": "quote_record",
+          "kind": "doc"
+        },
+        {
+          "id": "catalog_change",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "promotion_offer",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "media_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "media_plan",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "create_record",
+          "action_id": "launch"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "upsert_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_result",
+          "relation": "references"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "media_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "sales_order",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "brand_asset",
+          "target_doc": "brand_guideline",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_asset",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "brand_asset",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "brand_guideline",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "brand_campaign_brief",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "brand_guideline",
+          "target_doc": "brand_asset",
+          "relation": "references"
+        },
+        {
+          "source_doc": "brand_guideline",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "content_calendar_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "ad_set_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "survey_response",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "segment_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "market_insight",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "segment_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "survey_response",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "market_insight",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "value_proposition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "quote_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_lifecycle_case",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "pricing_decision",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "catalog_change",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "product_lifecycle_case",
+          "target_doc": "product_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "catalog_change",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "catalog_change",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "product_lifecycle_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "product_record",
+          "target_doc": "catalog_change",
+          "relation": "references"
+        }
+      ]
+    }
   }
 }

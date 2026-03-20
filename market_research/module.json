@@ -4,5 +4,652 @@
   "app_id": "marketing",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Market Research KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "market_research",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Market Research summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "market_research",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Market Research charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "market_research",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "market_research_trend_line",
+            "label": "Market Research trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "market_research_volume_column",
+            "label": "Market Research volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "market_research_distribution_donut",
+            "label": "Market Research distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "market_insight_trend_line",
+            "label": "Market Insight trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "market_insight_volume_column",
+            "label": "Market Insight volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "market_insight_distribution_donut",
+            "label": "Market Insight distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "survey_response_trend_line",
+            "label": "Survey Response trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "survey_response_volume_column",
+            "label": "Survey Response volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "survey_response_distribution_donut",
+            "label": "Survey Response distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "research_study_trend_line",
+            "label": "Research Study trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "research_study_volume_column",
+            "label": "Research Study volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "research_study_distribution_donut",
+            "label": "Research Study distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "segment_profile_trend_line",
+            "label": "Segment Profile trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "segment_profile_volume_column",
+            "label": "Segment Profile volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "segment_profile_distribution_donut",
+            "label": "Segment Profile distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Market Research reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "market_research",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "market_research",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "market_research",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "market_research",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "market_research",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Market Research Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Market Research Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Market Insight Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Market Insight Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "market_research_trend_line",
+        "label": "Market Research trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_research_volume_column",
+        "label": "Market Research volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_research_distribution_donut",
+        "label": "Market Research distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "market_insight_trend_line",
+        "label": "Market Insight trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_insight_volume_column",
+        "label": "Market Insight volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_insight_distribution_donut",
+        "label": "Market Insight distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "survey_response_trend_line",
+        "label": "Survey Response trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "survey_response_volume_column",
+        "label": "Survey Response volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "survey_response_distribution_donut",
+        "label": "Survey Response distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "research_study_trend_line",
+        "label": "Research Study trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "research_study_volume_column",
+        "label": "Research Study volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "research_study_distribution_donut",
+        "label": "Research Study distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "segment_profile_trend_line",
+        "label": "Segment Profile trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "segment_profile_volume_column",
+        "label": "Segment Profile volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "segment_profile_distribution_donut",
+        "label": "Segment Profile distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "market_insight",
+        "title": "Market Insight",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "survey_response",
+        "title": "Survey Response",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "research_study",
+        "title": "Research Study",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "segment_profile",
+        "title": "Segment Profile",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition"
+    ],
+    "upstream_docs": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition"
+    ],
+    "downstream_docs": [],
+    "actors": [
+      "sales rep",
+      "sales manager",
+      "reviewer",
+      "researcher",
+      "analyst",
+      "marketing owner"
+    ],
+    "downstream_effects": [
+      "feeds opportunity, negotiation, and forecast workflows",
+      "supports product, pricing, sales, and campaign decisions"
+    ],
+    "emits_records": [],
+    "handoff_targets": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record",
+      "segment_profile",
+      "market_insight",
+      "value_proposition"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "market_insight",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "survey_response",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "segment_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "survey_response",
+        "target_doc": "market_insight",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "segment_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "survey_response",
+        "relation": "references"
+      },
+      {
+        "source_doc": "research_study",
+        "target_doc": "market_insight",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "value_proposition",
+        "relation": "references"
+      },
+      {
+        "source_doc": "segment_profile",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "research_study",
+          "kind": "doc"
+        },
+        {
+          "id": "survey_response",
+          "kind": "doc"
+        },
+        {
+          "id": "product_record",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_record",
+          "kind": "doc"
+        },
+        {
+          "id": "segment_profile",
+          "kind": "doc"
+        },
+        {
+          "id": "market_insight",
+          "kind": "doc"
+        },
+        {
+          "id": "value_proposition",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "market_insight",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "survey_response",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "product_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_insight",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "segment_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "survey_response",
+          "target_doc": "market_insight",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "segment_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "survey_response",
+          "relation": "references"
+        },
+        {
+          "source_doc": "research_study",
+          "target_doc": "market_insight",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "research_study",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "value_proposition",
+          "relation": "references"
+        },
+        {
+          "source_doc": "segment_profile",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

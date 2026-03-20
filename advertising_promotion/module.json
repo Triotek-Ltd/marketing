@@ -4,5 +4,760 @@
   "app_id": "marketing",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Advertising Promotion KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "advertising_promotion",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Advertising Promotion summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "advertising_promotion",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Advertising Promotion charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "advertising_promotion",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "advertising_promotion_trend_line",
+            "label": "Advertising Promotion trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "advertising_promotion_volume_column",
+            "label": "Advertising Promotion volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "advertising_promotion_distribution_donut",
+            "label": "Advertising Promotion distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "campaign_record_trend_line",
+            "label": "Campaign Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "campaign_record_volume_column",
+            "label": "Campaign Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "campaign_record_distribution_donut",
+            "label": "Campaign Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "media_plan_trend_line",
+            "label": "Media Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "media_plan_volume_column",
+            "label": "Media Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "media_plan_distribution_donut",
+            "label": "Media Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "campaign_result_trend_line",
+            "label": "Campaign Result trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "campaign_result_volume_column",
+            "label": "Campaign Result volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "campaign_result_distribution_donut",
+            "label": "Campaign Result distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "promotion_offer_trend_line",
+            "label": "Promotion Offer trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "promotion_offer_volume_column",
+            "label": "Promotion Offer volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "promotion_offer_distribution_donut",
+            "label": "Promotion Offer distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Advertising Promotion reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "advertising_promotion",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "advertising_promotion",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "advertising_promotion",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "advertising_promotion",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "advertising_promotion",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Advertising Promotion Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Advertising Promotion Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Campaign Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Campaign Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "advertising_promotion_trend_line",
+        "label": "Advertising Promotion trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "advertising_promotion_volume_column",
+        "label": "Advertising Promotion volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "advertising_promotion_distribution_donut",
+        "label": "Advertising Promotion distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "campaign_record_trend_line",
+        "label": "Campaign Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "campaign_record_volume_column",
+        "label": "Campaign Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "campaign_record_distribution_donut",
+        "label": "Campaign Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "media_plan_trend_line",
+        "label": "Media Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "media_plan_volume_column",
+        "label": "Media Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "media_plan_distribution_donut",
+        "label": "Media Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "campaign_result_trend_line",
+        "label": "Campaign Result trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "campaign_result_volume_column",
+        "label": "Campaign Result volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "campaign_result_distribution_donut",
+        "label": "Campaign Result distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "promotion_offer_trend_line",
+        "label": "Promotion Offer trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "promotion_offer_volume_column",
+        "label": "Promotion Offer volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "promotion_offer_distribution_donut",
+        "label": "Promotion Offer distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "campaign_record",
+        "title": "Campaign Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "media_plan",
+        "title": "Media Plan",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "campaign_result",
+        "title": "Campaign Result",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "promotion_offer",
+        "title": "Promotion Offer",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order"
+    ],
+    "upstream_docs": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order"
+    ],
+    "downstream_docs": [
+      "media_plan",
+      "campaign_result",
+      "campaign_record"
+    ],
+    "actors": [
+      "campaign owner",
+      "approver",
+      "analyst",
+      "account owner"
+    ],
+    "downstream_effects": [
+      "supports digital execution, brand review, and revenue analysis"
+    ],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "media_plan",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "launch",
+        "target_doc": "campaign_result",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "close",
+        "target_doc": "campaign_result",
+        "effect_type": "upsert_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "promotion_offer",
+      "media_plan",
+      "campaign_result",
+      "brand_campaign_brief",
+      "campaign_record",
+      "lead_capture_record",
+      "pricing_decision",
+      "sales_order"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "promotion_offer",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "brand_campaign_brief",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "media_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "create_record",
+        "action_id": "launch"
+      },
+      {
+        "source_doc": "campaign_record",
+        "target_doc": "campaign_result",
+        "relation": "upsert_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_result",
+        "relation": "references"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "media_plan",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "media_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "campaign_result",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "pricing_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "sales_order",
+        "relation": "references"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "promotion_offer",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "promotion_offer",
+          "kind": "doc"
+        },
+        {
+          "id": "media_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_result",
+          "kind": "doc"
+        },
+        {
+          "id": "brand_campaign_brief",
+          "kind": "doc"
+        },
+        {
+          "id": "campaign_record",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_capture_record",
+          "kind": "doc"
+        },
+        {
+          "id": "pricing_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "sales_order",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "promotion_offer",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "media_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "brand_campaign_brief",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "media_plan",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "create_record",
+          "action_id": "launch"
+        },
+        {
+          "source_doc": "campaign_record",
+          "target_doc": "campaign_result",
+          "relation": "upsert_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_result",
+          "relation": "references"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "media_plan",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "media_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "campaign_result",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "pricing_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "sales_order",
+          "relation": "references"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "promotion_offer",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

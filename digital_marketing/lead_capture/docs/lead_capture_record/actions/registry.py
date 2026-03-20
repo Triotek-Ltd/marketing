@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "lead_capture_record"
 ALLOWED_ACTIONS = ['record', 'qualify', 'discard', 'archive']
-ACTION_RULES = {'record': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'qualify': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'discard': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'record': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'qualify': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'discard': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['captured', 'qualified', 'discarded'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "research_study"
 ARCHETYPE = "workflow_case"
 INITIAL_STATE = 'draft'
 STATES = ['draft', 'approved', 'active', 'completed', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': 'approved'}, 'launch': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': 'approved'}, 'launch': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'investigate market questions, collect evidence, and publish usable commercial insight', 'actors': ['researcher', 'analyst', 'marketing owner'], 'start_condition': 'a market-research question is defined', 'ordered_steps': ['Open the study and define the target segment.'], 'primary_actions': ['create', 'review', 'approve'], 'primary_transitions': ['research_study: draft -> approved -> active'], 'downstream_effects': ['supports product, pricing, sales, and campaign decisions'], 'action_actors': {'create': ['researcher'], 'review': ['analyst'], 'approve': ['analyst'], 'launch': ['marketing owner'], 'close': ['marketing owner'], 'archive': ['marketing owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

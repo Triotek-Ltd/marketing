@@ -4,5 +4,647 @@
   "app_id": "marketing",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Digital Marketing KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "digital_marketing",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Digital Marketing summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "digital_marketing",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Digital Marketing charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "digital_marketing",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "digital_marketing_trend_line",
+            "label": "Digital Marketing trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "digital_marketing_volume_column",
+            "label": "Digital Marketing volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "digital_marketing_distribution_donut",
+            "label": "Digital Marketing distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "ad_set_record_trend_line",
+            "label": "Ad Set Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "ad_set_record_volume_column",
+            "label": "Ad Set Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "ad_set_record_distribution_donut",
+            "label": "Ad Set Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "content_calendar_entry_trend_line",
+            "label": "Content Calendar Entry trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "content_calendar_entry_volume_column",
+            "label": "Content Calendar Entry volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "content_calendar_entry_distribution_donut",
+            "label": "Content Calendar Entry distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "digital_channel_trend_line",
+            "label": "Digital Channel trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "digital_channel_volume_column",
+            "label": "Digital Channel volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "digital_channel_distribution_donut",
+            "label": "Digital Channel distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "lead_capture_record_trend_line",
+            "label": "Lead Capture Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "lead_capture_record_volume_column",
+            "label": "Lead Capture Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "lead_capture_record_distribution_donut",
+            "label": "Lead Capture Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Digital Marketing reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "digital_marketing",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "digital_marketing",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "digital_marketing",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "digital_marketing",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "digital_marketing",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Digital Marketing Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Digital Marketing Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Ad Set Record Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Ad Set Record Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "digital_marketing_trend_line",
+        "label": "Digital Marketing trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "digital_marketing_volume_column",
+        "label": "Digital Marketing volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "digital_marketing_distribution_donut",
+        "label": "Digital Marketing distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "ad_set_record_trend_line",
+        "label": "Ad Set Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "ad_set_record_volume_column",
+        "label": "Ad Set Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "ad_set_record_distribution_donut",
+        "label": "Ad Set Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "content_calendar_entry_trend_line",
+        "label": "Content Calendar Entry trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "content_calendar_entry_volume_column",
+        "label": "Content Calendar Entry volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "content_calendar_entry_distribution_donut",
+        "label": "Content Calendar Entry distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "digital_channel_trend_line",
+        "label": "Digital Channel trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "digital_channel_volume_column",
+        "label": "Digital Channel volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "digital_channel_distribution_donut",
+        "label": "Digital Channel distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "lead_capture_record_trend_line",
+        "label": "Lead Capture Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "lead_capture_record_volume_column",
+        "label": "Lead Capture Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "lead_capture_record_distribution_donut",
+        "label": "Lead Capture Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "ad_set_record",
+        "title": "Ad Set Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "content_calendar_entry",
+        "title": "Content Calendar Entry",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "digital_channel",
+        "title": "Digital Channel",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "lead_capture_record",
+        "title": "Lead Capture Record",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "campaign_record",
+      "digital_channel",
+      "lead_capture_record",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record"
+    ],
+    "upstream_docs": [
+      "campaign_record",
+      "digital_channel",
+      "lead_capture_record",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record"
+    ],
+    "downstream_docs": [
+      "campaign_record"
+    ],
+    "actors": [],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "campaign_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "campaign_record",
+      "digital_channel",
+      "lead_capture_record",
+      "content_calendar_entry",
+      "ad_set_record",
+      "lead_record"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "ad_set_record",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "content_calendar_entry",
+        "target_doc": "campaign_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "content_calendar_entry",
+        "relation": "references"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "ad_set_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "digital_channel",
+        "target_doc": "lead_capture_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "digital_channel",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "lead_capture_record",
+        "target_doc": "lead_record",
+        "relation": "references"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "campaign_record",
+          "kind": "doc"
+        },
+        {
+          "id": "digital_channel",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_capture_record",
+          "kind": "doc"
+        },
+        {
+          "id": "content_calendar_entry",
+          "kind": "doc"
+        },
+        {
+          "id": "ad_set_record",
+          "kind": "doc"
+        },
+        {
+          "id": "lead_record",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "ad_set_record",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "content_calendar_entry",
+          "target_doc": "campaign_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "content_calendar_entry",
+          "relation": "references"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "ad_set_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "digital_channel",
+          "target_doc": "lead_capture_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "digital_channel",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "campaign_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "lead_capture_record",
+          "target_doc": "lead_record",
+          "relation": "references"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

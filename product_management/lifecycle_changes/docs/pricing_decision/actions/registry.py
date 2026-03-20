@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "pricing_decision"
 ALLOWED_ACTIONS = ['create', 'review', 'approve', 'reject', 'activate', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'reviewed'}, 'approve': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'approved'}, 'reject': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'reviewed'}, 'approve': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'approved'}, 'reject': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'activate': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'approved', 'effective'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

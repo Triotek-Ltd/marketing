@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 
 DOC_ID = "market_insight"
 ALLOWED_ACTIONS = ['create', 'review', 'publish', 'archive']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'reviewed'}, 'publish': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'reviewed'}, 'publish': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'published'}, 'archive': {'allowed_in_states': ['draft', 'reviewed', 'published'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 

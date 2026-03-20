@@ -1,4 +1,12 @@
 {
+  "review": [
+    {
+      "type": "update_current",
+      "fields": {
+        "workflow_state": "reviewed"
+      }
+    }
+  ],
   "archive": [
     {
       "type": "update_current",

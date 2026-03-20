@@ -21,6 +21,18 @@
       "fields": {
         "workflow_state": "approved"
       }
+    },
+    {
+      "type": "create_record",
+      "target_doc": "product_lifecycle_case",
+      "values": {
+        "title": {
+          "$template": "Product Lifecycle Case for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "PRODUCT_LIFECYCLE_CASE-{reference_no|id}"
+        }
+      }
     }
   ],
   "archive": [
@@ -28,6 +40,20 @@
       "type": "update_current",
       "fields": {
         "workflow_state": "archived"
+      }
+    }
+  ],
+  "activate": [
+    {
+      "type": "create_record",
+      "target_doc": "product_record",
+      "values": {
+        "title": {
+          "$template": "Product Record for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "PRODUCT_RECORD-{reference_no|id}"
+        }
       }
     }
   ]

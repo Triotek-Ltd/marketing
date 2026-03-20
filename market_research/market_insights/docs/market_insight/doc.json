@@ -10,7 +10,8 @@
   "doc_archetype": "ledger",
   "classification": {
     "archetype": "ledger",
-    "bundle": "operations"
+    "bundle": "operations",
+    "doc_kind": "ledger"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -23,5 +24,256 @@
       "confidence model",
       "recommendation taxonomy"
     ]
-  }
+  },
+  "ui": {
+    "icon_key": "report",
+    "accent": "#205072",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Market Insight KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "market_insight",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Market Insight summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "market_insight",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Market Insight charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "market_insight",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Market Insight reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "market_insight",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Market Insight records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "market_insight",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "market_insight",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "market_insight",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "market_insight",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "market_insight",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Market Insight Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Market Insight Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Market Insight Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Market Insight Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": true,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "market_insight_trend_line",
+        "label": "Market Insight trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_insight_volume_column",
+        "label": "Market Insight volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_insight_distribution_donut",
+        "label": "Market Insight distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record"
+    ],
+    "upstream_docs": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record"
+    ],
+    "downstream_docs": [],
+    "borrowed_fields": [
+      "source context from research_study or survey_response"
+    ],
+    "emits_records": [],
+    "downstream_effects": [
+      "feeds opportunity, negotiation, and forecast workflows"
+    ],
+    "actors": [
+      "sales rep",
+      "sales manager",
+      "reviewer"
+    ],
+    "handoff_targets": [
+      "research_study",
+      "survey_response",
+      "product_record",
+      "campaign_record"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "market_insight",
+        "target_doc": "research_study",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "survey_response",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "product_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_insight",
+        "target_doc": "campaign_record",
+        "relation": "references"
+      }
+    ]
+  },
+  "contract_version": 1
 }

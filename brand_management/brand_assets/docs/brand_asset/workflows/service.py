@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Any, cast
+
 
 DOC_ID = "brand_asset"
 ARCHETYPE = "master"
 INITIAL_STATE = 'draft'
 STATES = ['draft', 'approved', 'active', 'archived']
 TERMINAL_STATES = ['archived']
-ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': 'approved'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': 'archived'}}
+ACTION_RULES: dict[str, dict[str, Any]] = {'create': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': 'approved'}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'business_objective': 'maintain brand identity standards and control the assets released under the brand', 'actors': ['brand owner', 'designer', 'reviewer'], 'start_condition': 'a brand asset or guideline update is needed', 'ordered_steps': ['Create and review brand assets.', 'Release the approved asset set for use.'], 'primary_actions': ['create', 'review', 'approve', 'reject', 'publish', 'archive'], 'primary_transitions': ['brand_asset: draft -> in_review -> approved or rejected', 'brand_asset: approved -> active'], 'downstream_effects': ['supports campaigns, product marketing, and external communications'], 'action_actors': {'create': ['brand owner'], 'review': ['reviewer'], 'approve': ['reviewer'], 'archive': ['brand owner']}}
@@ -29,7 +31,7 @@ class WorkflowService:
 
     def next_state_for(self, action_id: str) -> str | None:
         rule = ACTION_RULES.get(action_id, {})
-        return rule.get("transitions_to")
+        return cast(str | None, rule.get("transitions_to"))
 
     def apply_action(self, action_id: str, state: str | None) -> dict:
         if not self.is_action_allowed(action_id, state):

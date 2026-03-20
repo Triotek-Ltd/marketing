@@ -21,6 +21,28 @@
       "fields": {
         "workflow_state": "approved"
       }
+    },
+    {
+      "type": "create_record",
+      "target_doc": "media_plan",
+      "values": {
+        "title": {
+          "$template": "Media Plan for {title|reference_no|id}"
+        },
+        "reference_no": {
+          "$template": "MEDIA_PLAN-{reference_no|id}"
+        },
+        "source_reference": {
+          "$from": [
+            "reference_no",
+            "id"
+          ]
+        },
+        "source_doc_id": {
+          "$template": "{id}"
+        },
+        "approval_status": "approved"
+      }
     }
   ],
   "launch": [
